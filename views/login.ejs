@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head")%>
+
+<body>
+    <%- include("./partials/headerDeslogueado")%>
+    <main>
+        <div class="uk-section uk-section-small">
+            <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">
+                <form action="/perfil/miPerfil"> <!-- Deberiamos validar el formulario -->
+                    <!-- <label for="nombre"> Nombre de Usuario </label> -->
+                    <input type="text" name="nombre" placeholder="Telefono, usuario o correo electronico">
+                    <input type="text" name="contrasena" placeholder="Contraseña">
+                    <button type="submit"> Iniciar Sesion </button>
+                    <h2>(Formulario de login)</h2>
+                
+                
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <%- include("./partials/footer")%>
+
+</body>
+
+</html>
