@@ -12,7 +12,8 @@ const posts = {
         texto: "Discurso en Opis",
         fecha: "324 aC",
         idUsuario:0,
-        usuario: "alexanderTheGr8"        //Clave foranea para enlazar con los datos de "userModule"
+        usuario: "alexanderTheGr8",      //Clave foranea para enlazar con los datos de "userModule"
+        idComentarios: [0,2]
         },
         {
         idPost:1,
@@ -59,7 +60,16 @@ const posts = {
         let array = [];
         for (let x = 0; x < this.listaIndex.length; x++) {
             if (this.listaIndex[x].usuario == username){
-                array.push(this.listaIndex[x].imagen);
+                array.push(this.listaIndex[x]);
+            }
+        }
+        return array;
+    },
+    imagesById: function(id){  //Encuentra la imagen por id del usuario
+        let array = [];
+        for (let x = 0; x < this.listaIndex.length; x++) {
+            if (this.listaIndex[x].idUsuario == id){
+                array.push(this.listaIndex[x]);
             }
         }
         return array;

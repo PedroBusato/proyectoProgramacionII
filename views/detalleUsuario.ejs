@@ -31,8 +31,8 @@
                         <% for( let i = 0; i < imagenes.length; i++ ) { %>
                             <div class="uk-card uk-card-hover uk-card-body uk-flex uk-flex-column uk-flex-middle uk-flex-center ">
                                 <a href="/detalle/post" class="link-detalle">
-                                    <img src="/<%= imagenes[i] %>" alt="agregar en el modulo posts.js un atributo de descripcion" class="foto-perfil">
-                                    <p class="uk-text-center"><%= imagenes[i] %></p>
+                                    <img src="/<%= imagenes[i].imagen %>" alt="agregar en el modulo posts.js un atributo de descripcion" class="foto-perfil">
+                                    <p class="uk-text-center"><%= imagenes[i].texto %></p>
                                 </a>
                             </div>
                         <% } %>

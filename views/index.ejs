@@ -21,7 +21,7 @@
                             </div>
                             <div class="post-body uk-flex uk-flex-center">
                                 <a href="/detalle/post">
-                                    <img src="/<%= posts.imagesByUsername(usuarios[i].usuario)[0] %>" alt="">
+                                    <img src="/<%= posts.imagesById(usuarios[i].id)[0].imagen %>" alt=""> <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
                                 </a>
                             </div>
                             <div class="post-reacciones">
@@ -33,14 +33,14 @@
                                 </ul>
                                 <div class="post-pie uk-flex">
                                     <h5 class="uk-width-1-6"><a href="/detalle/usuario/<%= usuarios[i].usuario %>"><%= usuarios[i].usuario %></a></h5>
-                                    <p class="uk-width-5-6">Pie de post</p>
+                                    <p class="uk-width-5-6"><%= posts.imagesById(usuarios[i].id)[0].texto%></p>
                                 </div>
                             </div>
                             <div class="post-comentarios">
                                 <h6>Comentarios</h6>
                                 <ul>
                                     <li>
-                                        <a href="/detalle/usuario">Usuario</a>
+                                        <a href="/detalle/usuario"><%= comentarios.commentsById(posts.imagesById(usuarios[i].id)[0].idPost[0]) %></a>  <!-- Tengo que llevarme toda la logica fuera de las vistas -->
                                         <p>Comentario</p>
                                     </li>
                                     <li>
