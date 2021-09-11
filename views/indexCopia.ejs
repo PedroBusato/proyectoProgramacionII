@@ -10,18 +10,18 @@
             <div class="uk-container uk-container-large uk-flex">
                 <section id="posts" class="uk-flex uk-flex-middle uk-flex-center uk-flex-column uk-child-width-1-2 uk-width-1-1">
                     
-                    <% for( let i = 0; i < postsIndex.length; i++ ) { %>
+                    <% for( let i = 0; i < usuarios.length; i++ ) { %>
                         <article class="post uk-card-default uk-flex uk-flex-column">
                             <div class="info-usuario uk-flex ">
                                 <div>
-                                    <img src="/<%= usuarios[i].foto%>" alt="">
+                                    <img src="/<%= usuarios[i].foto %>" alt="">
                                 </div>
-                                <h4><a href="/detalle/usuario/<%= postsIndex[i].usuario %>"> <%= usuarios[i].usuario %> </a></h4>
+                                <h4><a href="/detalle/usuario/<%= usuarios[i].usuario %>"> <%= usuarios[i].usuario %> </a></h4>
                                 
                             </div>
                             <div class="post-body uk-flex uk-flex-center">
                                 <a href="/detalle/post">
-                                    <img src="/<%= postsIndex[i].imagen %>" alt=""> <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
+                                    <img src="/<%= posts.imagesById(usuarios[i].id)[0].imagen %>" alt=""> <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
                                 </a>
                             </div>
                             <div class="post-reacciones">
@@ -33,19 +33,19 @@
                                 </ul>
                                 <div class="post-pie uk-flex">
                                     <h5 class="uk-width-1-6"><a href="/detalle/usuario/<%= usuarios[i].usuario %>"><%= usuarios[i].usuario %></a></h5>
-                                    <p class="uk-width-5-6"><%= postsIndex[i].texto %></p>
+                                    <p class="uk-width-5-6"><%= posts.imagesById(usuarios[i].id)[0].texto%></p>
                                 </div>
                             </div>
                             <div class="post-comentarios">
                                 <h6>Comentarios</h6>
                                 <ul>
                                     <li>
-                                        <a href="/detalle/usuario/<%= comentarios.commentsById(postsIndex[i].idPost)[0].usuario %>"> <%= comentarios.commentsById(postsIndex[i].idPost)[0].usuario %> </a>  <!-- Tengo que llevarme toda la logica fuera de las vistas -->
-                                        <p><%= comentarios.commentsById(postsIndex[i].idPost)[0].texto %></p>
+                                        <a href="/detalle/usuario"><%= comentarios.commentsById(posts.imagesById(usuarios[i].id)[0].idPost[0]) %></a>  <!-- Tengo que llevarme toda la logica fuera de las vistas -->
+                                        <p>Comentario</p>
                                     </li>
                                     <li>
-                                        <a href="/detalle/usuario/<%= comentarios.commentsById(postsIndex[i].idPost)[1].usuario %>"> <%= comentarios.commentsById(postsIndex[i].idPost)[1].usuario %> </a>
-                                        <p> <%= comentarios.commentsById(postsIndex[i].idPost)[1].texto %> </p>
+                                        <a href="/detalle/usuario">Usuario</a>
+                                        <p>Comentario</p>
                                     </li>
                                     <a href="">Ver más...</a>
                                 </ul>

@@ -65,14 +65,12 @@ const posts = {
         }
         return array;
     },
-    imagesById: function(id){  //Encuentra la imagen por id del usuario
-        let array = [];
+    imagesById: function(id){                                 //Encuentra la imagen por id del usuario y la retorna automaticamente
         for (let x = 0; x < this.listaIndex.length; x++) {
             if (this.listaIndex[x].idUsuario == id){
-                array.push(this.listaIndex[x]);
+                return (this.listaIndex[x]);                  //Nos devuelve solo una de las fotos, la primera que encuentra! Es suficiente para el index esto!
             }
         }
-        return array;
     }
 }
 

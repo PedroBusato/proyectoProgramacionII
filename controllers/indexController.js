@@ -4,7 +4,11 @@ const moduloComments = require("../data/comentarios");
 
 const controller = {
     homePage: function(req, res){
-        res.render("index", {usuarios: moduloUsers.lista, posts:moduloPosts, comentarios: moduloComments})
+        let postsUsuarios = []
+        for (let i = 0; i < moduloUsers.lista.length; i++) {
+            postsUsuarios.push(moduloPosts.imagesById(moduloUsers.lista[i].id));           //Teniamos las vistas muy cargadas de logica, y decidimos traerlas al controller
+        }
+        res.render("index", {usuarios: moduloUsers.lista, postsIndex: postsUsuarios, comentarios: moduloComments}) //El orden de los usuarios es igual al de las imagenes, por lo que en el index se veran en el orden correcto
     }, 
     loginPage: function(req, res){
         res.render("login", {message: "juan"})
