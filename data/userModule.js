@@ -42,9 +42,9 @@ const user = {
         }        
     ],
     findUser: function(user){
-        for (let x = 0; x < this.lista.length; x++) {
-            if (this.lista[x].usuario == user){
-                return this.lista[x];
+        for (let i = 0; i < this.lista.length; i++) {
+            if (this.lista[i].usuario == user){
+                return this.lista[i];
             }
         }
     }
