@@ -7,6 +7,6 @@ let router = express.Router();
 let controller = require("../controllers/detalleController");
 
 router.get("/usuario/:usuario", controller.user);
-router.get("/post", controller.post);
+router.get("/post/:post", controller.post);
 
 module.exports = router;

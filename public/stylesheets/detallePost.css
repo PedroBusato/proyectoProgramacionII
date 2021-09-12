@@ -6,7 +6,8 @@ article.detalle-post{
 }
 
 article.detalle-post .imagen-post{
-
+    width: 500px;
+    height: 600px;
 }
 
 .comentarios-detalle{
@@ -20,6 +21,8 @@ article.detalle-post .imagen-post{
 }
 .comentarios-detalle .info-post img{
     border-radius: 50%;
+    width: 25px;
+    height: 25px;
 }
 .comentarios-detalle .info-post h3{
     font-size: 14px;

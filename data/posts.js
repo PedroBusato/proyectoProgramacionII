@@ -65,11 +65,19 @@ const posts = {
         }
         return array;
     },
-    imagesById: function(id){                                 //Encuentra la imagen por id del usuario y la retorna automaticamente
+    imagesById: function(id){                                  //Encuentra la imagen por id del usuario y la retorna automaticamente
         for (let x = 0; x < this.listaIndex.length; x++) {
             if (this.listaIndex[x].idUsuario == id){
                 return (this.listaIndex[x]);                  //Nos devuelve solo una de las fotos, la primera que encuentra! Es suficiente para el index esto!
             }
+        }
+    },
+    imagesByPostId: function(id){
+        for (let i = 0; i < this.listaIndex.length; i++) {
+            if (this.listaIndex[i].idPost == id) {
+                return (this.listaIndex[i])
+            }
+            
         }
     }
 }

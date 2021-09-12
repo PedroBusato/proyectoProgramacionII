@@ -30,7 +30,7 @@
                     <div class="uk-grid uk-child-width-1-3 uk-width-1-1 uk-margin-remove" uk-grid>
                         <% for( let i = 0; i < imagenes.length; i++ ) { %>
                             <div class="uk-card uk-card-hover uk-card-body uk-flex uk-flex-column uk-flex-middle uk-flex-center ">
-                                <a href="/detalle/post" class="link-detalle">
+                                <a href="/detalle/post/<%=imagenes[i].idPost%>" class="link-detalle">
                                     <img src="/<%= imagenes[i].imagen %>" alt="agregar en el modulo posts.js un atributo de descripcion" class="foto-perfil">
                                     <p class="uk-text-center"><%= imagenes[i].texto %></p>
                                 </a>
