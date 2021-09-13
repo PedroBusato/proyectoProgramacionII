@@ -2,6 +2,8 @@
 // DetallePost.ejs
 // DetalleUsuario.ejs
 
+//Alejo probando cambios
+
 let express = require('express');
 let router = express.Router();
 let controller = require("../controllers/detalleController");
