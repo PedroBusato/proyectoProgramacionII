@@ -3,6 +3,12 @@
 // 1 --> Marco Aurelio
 // 2 --> Gengis Kan
 // 3 --> Winston Churchill
+// 4 --> Julio Cesar  
+// 5 --> Socrates Sofronisco
+// 6 --> Henry VIII
+// 7 --> Ivar Ragnarsson
+// 8 --> Diogenes De Sinope
+// 9 --> Napoleon Bonaparte
 
 const posts = {
     listaIndex : [
@@ -54,7 +60,69 @@ const posts = {
         fecha: "187",
         idUsuario: 1,
         usuario: "FatherOfComodus"
-        }
+        },
+
+
+
+        
+        {
+        idPost:6,
+        imagen:"images/julioCesarPost.jpg",
+        texto: "#true #own #thoughts",
+        fecha: "79aC",
+        idUsuario: 4,
+        usuario: "23StabsMan"
+        },
+        {
+        idPost:7,
+        imagen:"images/socratesPost.jpg",
+        texto: "Tarde de té y dialogo con ellos",
+        fecha: "448aC",
+        idUsuario: 5,
+        usuario: "writeLessMind"
+        },       
+        {
+         idPost:8,
+        imagen:"images/henryViiiPost.jpg",
+        texto: "Mis esposas. Las amo! <3",
+        fecha: "1522",
+        idUsuario: 6,
+        usuario: "queenSlayer"
+        },
+        {
+        idPost:9,
+        imagen:"images/ivarRagnarssonPost.jpg",
+        texto: "new friends",
+        fecha: "880dC",
+        idUsuario: 7,
+        usuario: "Boneless"
+        },
+        {
+        idPost:10,
+        imagen:"images/diogenesDeSinopePost.jpg",
+        texto: "my home has no limits",
+        fecha: "368aC",
+        idUsuario: 8,
+        usuario: "homelessBrilliance"
+        },
+        {
+        idPost:11,
+        imagen:"images/napoleonBonapartePost.jpg",
+        texto: "L'avarice casse le sac",
+        fecha: "1800",
+        idUsuario: 9,
+        usuario: "NapoleonMandaparte"
+        },
+        
+    
+
+
+
+
+
+
+
+
     ],
     imagesByUsername: function(username){
         let array = [];

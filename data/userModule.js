@@ -102,7 +102,7 @@ const user = {
         foto:"images/napoleonBonapartePerfil.jpg",
         fecha:"12/12/1799",
         id: 9
-        },  
+        }, 
 
 
     ],
