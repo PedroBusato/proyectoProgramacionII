@@ -8,11 +8,35 @@
     <main>
         <div class="uk-section uk-section-small">
             <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">
-                <form action="" method="GET">
-                    
-                    <h2>(Formulario de registración)</h2>
-            
-                </form>
+                <div class="formContainerRegister">
+                    <h1>Register Now</h1>
+                    <form class="formRegister" action="/" method="GET">
+                        <div class="line">
+                            <div class="col1">
+                                <label for="name"> Bio </label>
+                                <input name="name" class="inputRegister" type="text" placeholder="Name">
+                            </div>
+                            <div class="col2">
+                                <label for="lastname"> Bio </label>
+                                <input name="lastname" class="inputRegister" type="text" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="line">
+                            <input class="inputRegister email" type="text" placeholder="Email">
+                        </div>
+                        <div class="line">
+                            <input class="inputRegister" type="text" placeholder="Password">
+                            <input class="inputRegister" type="text" placeholder="Confirm Password">    
+                        </div>
+                        <div class="line">
+                            <label for="bio"> Bio </label>
+                            <input class="inputRegister" name="bio" type="text">
+                            <label for="age"> Age </label>
+                            <input class="inputRegister" name="age" type="text">
+                        </div>
+                        <button class="buttonRegister" type="submit"></button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>

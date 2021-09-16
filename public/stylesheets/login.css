@@ -1,0 +1,41 @@
+main{
+    background-color: #2F1E27;
+    /* font-family: 'Varela Round', sans-serif; */
+    /* font-family: 'Balsamiq Sans', cursive; */
+}
+
+.formContainerLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 400px;
+    padding: 10px;
+    background-color: burlywood;
+    
+}
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    width: 50%;
+    height: 300px;
+    background-color: brown;
+}
+
+.inputLogin{
+    border-radius:22px;
+    width:300px;
+    height: 34px;
+    border: none;
+}
+
+.buttonLogin{
+    border-radius:22px;
+    width:120px;
+    height: 34px;
+    border: none;
+}

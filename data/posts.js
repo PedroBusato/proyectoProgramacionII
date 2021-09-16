@@ -60,11 +60,7 @@ const posts = {
         fecha: "187",
         idUsuario: 1,
         usuario: "FatherOfComodus"
-        },
-
-
-
-        
+        },        
         {
         idPost:6,
         imagen:"images/julioCesarPost.jpg",
@@ -82,7 +78,7 @@ const posts = {
         usuario: "writeLessMind"
         },       
         {
-         idPost:8,
+        idPost:8,
         imagen:"images/henryViiiPost.jpg",
         texto: "Mis esposas. Las amo! <3",
         fecha: "1522",
@@ -92,15 +88,15 @@ const posts = {
         {
         idPost:9,
         imagen:"images/ivarRagnarssonPost.jpg",
-        texto: "new friends",
+        texto: "Who needs legs when you can conquer Europe with your mind?",
         fecha: "880dC",
         idUsuario: 7,
         usuario: "Boneless"
         },
         {
         idPost:10,
-        imagen:"images/diogenesDeSinopePost.jpg",
-        texto: "my home has no limits",
+        imagen:"images/diogenesDeSionopePost.jpg",
+        texto: "Quien se cree que es este para taparme la luz del sol? #cancelAlexanderTheGreat",
         fecha: "368aC",
         idUsuario: 8,
         usuario: "homelessBrilliance"
@@ -113,16 +109,6 @@ const posts = {
         idUsuario: 9,
         usuario: "NapoleonMandaparte"
         },
-        
-    
-
-
-
-
-
-
-
-
     ],
     imagesByUsername: function(username){
         let array = [];

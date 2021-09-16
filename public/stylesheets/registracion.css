@@ -1,0 +1,38 @@
+.formContainerRegister{
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 700px;
+    width: 50%;
+}
+
+.formRegister{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: cadetblue;
+    height: 550px;
+    width: 94%;
+}
+
+.line{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.col1, .col2{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputRegister{
+    border-radius:22px;
+    height: 34px;
+    border: none;
+}
+
+.email{
+    width: 100%;
+}

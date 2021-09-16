@@ -1,4 +1,5 @@
-let moduloUsers = require("../data/userModule")
+let moduloUsers = require("../data/userModule");
+let moduloPosts = require("../data/posts")
 
 const controller = {
     myProfile: function(req, res){
@@ -11,7 +12,8 @@ const controller = {
             }  
         };
         if (coincide == true){
-            res.render("miPerfil", {infoUsuario: moduloUsers.findUser(InputUsuario)});
+            postsUsuario = moduloPosts.imagesByUsername(InputUsuario);
+            res.render("miPerfil", {infoUsuario: moduloUsers.findUser(InputUsuario), posts: postsUsuario});
         }else{
             res.render("error", {error: "El usuario o la contraseña no corresponden"}); //Crear la vista "error" de manera apropiada
         }

@@ -40,9 +40,6 @@ const user = {
         fecha:"30/11/1874",
         id: 3
         },        
-
-
-
         {
         nombre: "Julio",
         apellido: "Cesar",
