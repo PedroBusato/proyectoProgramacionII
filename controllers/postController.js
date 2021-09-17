@@ -1,4 +1,4 @@
-const moduloUsers = require("../data/userModule");
+const moduloUsers = require("../data/users");
 const moduloPosts = require("../data/posts");
 const moduloComments = require("../data/comentarios");
 

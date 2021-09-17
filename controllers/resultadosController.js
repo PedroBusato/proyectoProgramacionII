@@ -1,4 +1,4 @@
-const moduloUsers = require("../data/userModule");
+const moduloUsers = require("../data/users");
 
 const controller = {
     showResult: function(req, res){

@@ -1,5 +1,5 @@
-let moduloUsers = require("../data/userModule");
-let moduloPosts = require("../data/posts")
+const moduloUsers = require("../data/users");
+const moduloPosts = require("../data/posts")
 
 const controller = {
     myProfile: function(req, res){

@@ -1,40 +1,73 @@
+/* Colors */
+/* #fff2df */
+/* #d9ad7c */
+/* #a2836e */
+/* #674d3c */
+
 .formContainerRegister{
-    background-color: burlywood;
+    background-color: #d9ad7c;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 700px;
     width: 50%;
+    border-radius: 22px;
+}
+
+.formContainerRegister h1{
+    /* color: red; */
+    margin-top: 5px;
 }
 
 .formRegister{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: cadetblue;
-    height: 550px;
-    width: 94%;
+    background-color: #a2836e;
+    height: 570px;
+    width: 100%;
 }
 
 .line{
     display: flex;
     padding: 30px;
-    /* justify-content: space-around; */
     width: 100%;
+}
+
+.finalLine{
+    width: 81%;
+    display: flex;
+    justify-content: right;
 }
 
 .col1, .col2{
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+    width: 40%;
 }
 
 .inputRegister{
     border-radius:22px;
     height: 34px;
     border: none;
+    cursor: pointer;
+    background-color: #fff2df;
+}
+
+.file{
+    width: 100%;
 }
 
 .email{
-    width: 100%;
+    width:82%;
+}
+
+.buttonRegister{
+    border-radius:22px;
+    height: 34px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    background-color: #fff2df;
 }
