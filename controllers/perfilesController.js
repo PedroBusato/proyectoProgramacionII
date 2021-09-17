@@ -20,6 +20,12 @@ const controller = {
     },
     editProfile: function(req, res){
         res.render("editarPerfil", {user: moduloUsers.lista[1]});
+    },
+    detailUser: function(req, res){
+        let usuario = req.params.user;
+        let usuarioInfo = moduloUsers.findUser(usuario);
+        let arrayImagenes = moduloPosts.imagesByUsername(usuario);
+        res.render("detalleUsuario", {usuario: usuarioInfo, imagenes: arrayImagenes});   //Por el momento pasamos al informacion del modulo que creamos
     }
 }
 

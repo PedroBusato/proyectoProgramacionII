@@ -16,11 +16,11 @@
                                 <div>
                                     <img src="/<%= usuarios[i].foto%>" alt="">
                                 </div>
-                                <h4><a href="/detalle/usuario/<%= postsIndex[i].usuario %>"> <%= usuarios[i].usuario %> </a></h4>
+                                <h4><a href="/profile/userDetail/<%= postsIndex[i].usuario %>"> <%= usuarios[i].usuario %> </a></h4>
                                 
                             </div>
                             <div class="post-body uk-flex uk-flex-center">
-                                <a href="/detalle/post/<%= postsIndex[i].idPost %>">
+                                <a href="post/detailPost/<%= postsIndex[i].idPost %>">
                                     <img src="/<%= postsIndex[i].imagen %>" alt=""> <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
                                 </a>
                             </div>
@@ -32,7 +32,7 @@
                                     </li>
                                 </ul>
                                 <div class="post-pie uk-flex">
-                                    <h5 class="uk-width-1-6"><a href="/detalle/usuario/<%= usuarios[i].usuario %>"><%= usuarios[i].usuario %></a></h5>
+                                    <h5 class="uk-width-1-6"><a href="/profile/userDetail/<%= usuarios[i].usuario %>"><%= usuarios[i].usuario %></a></h5>
                                     <p class="uk-width-5-6"><%= postsIndex[i].texto %></p>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                 <ul>
                                     <% for( let x = 0; x < postsIndex[i].comentarios.length; x++ ) { %>
                                         <li>
-                                            <a href="/detalle/usuario/<%= postsIndex[i].comentarios[x].usuario %>"> <%= postsIndex[i].comentarios[x].usuario %> </a> 
+                                            <a href="/profile/userDetail/<%= postsIndex[i].comentarios[x].usuario %>"> <%= postsIndex[i].comentarios[x].usuario %> </a> 
                                             <p> <%= postsIndex[i].comentarios[x].texto %></p>
                                         </li>
                                     <% } %>

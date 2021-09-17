@@ -6,6 +6,8 @@ let express = require("express");
 let router = express.Router();
 let controller = require("../controllers/perfilesController")
 
-router.get("/miPerfil", controller.myProfile);
-router.get("/editarPerfil", controller.editProfile);
+router.get("/myProfile", controller.myProfile);
+router.get("/editProfile", controller.editProfile);
+router.get("/userDetail/:user", controller.detailUser);
+
 module.exports = router;
