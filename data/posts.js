@@ -10,6 +10,9 @@
 // 8 --> Diogenes De Sinope
 // 9 --> Napoleon Bonaparte
 
+// En lugar de buscar los comentarios de la foto en las vistas, buscamos los comentarios dentro de cada post!
+const moduloComments = require("../data/comentarios");
+
 const posts = {
     listaIndex : [
         {
@@ -19,7 +22,7 @@ const posts = {
         fecha: "324 aC",
         idUsuario:0,
         usuario: "alexanderTheGr8",      //Clave foranea para enlazar con los datos de "userModule"
-        idComentarios: [0,2]
+        comentarios: moduloComments.commentsById(0)
         },
         {
         idPost:1,
@@ -27,7 +30,8 @@ const posts = {
         texto: "Con mi amigo Aristoteles",
         fecha: "317 aC",
         idUsuario: 0,
-        usuario: "alexanderTheGr8"
+        usuario: "alexanderTheGr8",
+        comentarios: moduloComments.commentsById(1)
         },
         {
         idPost:2,
@@ -35,7 +39,8 @@ const posts = {
         texto: "Entrando a China con las tropas #DinastiaJin",
         fecha: "1234",
         idUsuario: 2,
-        usuario: "FatherOfAll"
+        usuario: "FatherOfAll",
+        comentarios: moduloComments.commentsById(2)
         },
         {
         idPost:3,
@@ -43,7 +48,8 @@ const posts = {
         texto: "Good ol' times",
         fecha: "1921",
         idUsuario: 3,
-        usuario: "QueenSaviour_"
+        usuario: "QueenSaviour_",
+        comentarios: moduloComments.commentsById(3)
         },
         {
         idPost:4,
@@ -51,7 +57,8 @@ const posts = {
         texto: "The greatest ever",
         fecha: "360aC",
         idUsuario: 0,
-        usuario: "alexanderTheGr8"
+        usuario: "alexanderTheGr8",
+        comentarios: moduloComments.commentsById(4)
         },
         {
         idPost:5,
@@ -59,7 +66,8 @@ const posts = {
         texto: "Back from the North",
         fecha: "187",
         idUsuario: 1,
-        usuario: "FatherOfComodus"
+        usuario: "FatherOfComodus",
+        comentarios: moduloComments.commentsById(5)
         },        
         {
         idPost:6,
@@ -67,7 +75,8 @@ const posts = {
         texto: "#true #own #thoughts",
         fecha: "79aC",
         idUsuario: 4,
-        usuario: "23StabsMan"
+        usuario: "23StabsMan",
+        comentarios: moduloComments.commentsById(6)
         },
         {
         idPost:7,
@@ -75,7 +84,8 @@ const posts = {
         texto: "Tarde de té y dialogo con ellos",
         fecha: "448aC",
         idUsuario: 5,
-        usuario: "writeLessMind"
+        usuario: "writeLessMind",
+        comentarios: moduloComments.commentsById(7)
         },       
         {
         idPost:8,
@@ -83,7 +93,8 @@ const posts = {
         texto: "Mis esposas. Las amo! <3",
         fecha: "1522",
         idUsuario: 6,
-        usuario: "queenSlayer"
+        usuario: "queenSlayer",
+        comentarios: moduloComments.commentsById(8)
         },
         {
         idPost:9,
@@ -91,7 +102,8 @@ const posts = {
         texto: "Who needs legs when you can conquer Europe with your mind?",
         fecha: "880dC",
         idUsuario: 7,
-        usuario: "Boneless"
+        usuario: "Boneless",
+        comentarios: moduloComments.commentsById(9)
         },
         {
         idPost:10,
@@ -99,7 +111,8 @@ const posts = {
         texto: "Quien se cree que es este para taparme la luz del sol? #cancelAlexanderTheGreat",
         fecha: "368aC",
         idUsuario: 8,
-        usuario: "homelessBrilliance"
+        usuario: "homelessBrilliance",
+        comentarios: moduloComments.commentsById(10)
         },
         {
         idPost:11,
@@ -107,7 +120,8 @@ const posts = {
         texto: "L'avarice casse le sac",
         fecha: "1800",
         idUsuario: 9,
-        usuario: "NapoleonMandaparte"
+        usuario: "NapoleonMandaparte",
+        comentarios: moduloComments.commentsById(11)
         },
     ],
     imagesByUsername: function(username){

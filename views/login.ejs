@@ -10,16 +10,34 @@
             <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">
                 <div class="formContainerLogin">
                     <h2>Join us Now</h2>
-                    <form class="formLogin" action="/perfil/miPerfil" method="GET"> <!-- Deberiamos validar el formulario -->
-                        <!-- <label for="nombre"> Nombre de Usuario </label> -->
+                    <form class="formLogin" action="/perfil/miPerfil" method="GET"> 
                         <input class="inputLogin" type="text" name="usuario" placeholder="Username">
-                        <input class="inputLogin" type="text" name="contrasena" placeholder="Password">
+                        <input class="inputLogin" type="password" name="contrasena" placeholder="Password">
                         <button class="buttonLogin" type="submit"> submit </button>
                     </form>
                 </div>
             </div>
         </div>
     </main>
+    <!-- <div class="container">
+        <h2>It's now or never</h2>
+        <h1>Come on , Join us!</h1>
+        
+        <form action="" id="join-us">
+          <div class="fields">
+            <span>
+             <input placeholder="Name" type="text" />
+          </span>
+          <br />
+           <span>
+             <input placeholder="Password" type="password" />
+          </span>
+          </div>
+          <div class="submit">
+            <input class="submit" value="Submit" type="button" />
+          </div>
+        </form>
+      </div> -->
 
     <%- include("./partials/footer")%>
 

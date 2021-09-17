@@ -13,20 +13,29 @@
                     <form class="formRegister" action="/" method="GET">
                         <div class="line">
                             <div class="col1">
-                                <label for="name"> Bio </label>
+                                <label for="name"> Name </label>
                                 <input name="name" class="inputRegister" type="text" placeholder="Name">
                             </div>
                             <div class="col2">
-                                <label for="lastname"> Bio </label>
+                                <label for="lastname"> Last name </label>
                                 <input name="lastname" class="inputRegister" type="text" placeholder="Last Name">
                             </div>
                         </div>
                         <div class="line">
-                            <input class="inputRegister email" type="text" placeholder="Email">
+                            <div class="col1">
+                                <label for="email"> Email </label>
+                                <input name="email" class="inputRegister email" type="text" placeholder="Email">
+                            </div>
                         </div>
                         <div class="line">
-                            <input class="inputRegister" type="text" placeholder="Password">
-                            <input class="inputRegister" type="text" placeholder="Confirm Password">    
+                            <div class="col1">
+                                <label for="password">Password</label>
+                                <input name="password" class="inputRegister" type="password" placeholder="Password">
+                            </div>
+                            <div class="col2">
+                                <label for="passwordRepeat">Password</label>
+                                <input name="passwordRepeat" class="inputRegister" type="password" placeholder="Confirm Password">    
+                            </div>
                         </div>
                         <div class="line">
                             <label for="bio"> Bio </label>

@@ -39,14 +39,12 @@
                             <div class="post-comentarios">
                                 <h6>Comentarios</h6>
                                 <ul>
-                                    <li>
-                                        <a href="/detalle/usuario/<%= comentarios.commentsById(postsIndex[i].idPost)[0].usuario %>"> <%= comentarios.commentsById(postsIndex[i].idPost)[0].usuario %> </a> 
-                                        <p><%= comentarios.commentsById(postsIndex[i].idPost)[0].texto %></p>
-                                    </li>
-                                    <li>
-                                        <a href="/detalle/usuario/<%= comentarios.commentsById(postsIndex[i].idPost)[1].usuario %>"> <%= comentarios.commentsById(postsIndex[i].idPost)[1].usuario %> </a>
-                                        <p> <%= comentarios.commentsById(postsIndex[i].idPost)[1].texto %> </p>
-                                    </li>
+                                    <% for( let x = 0; x < postsIndex[i].comentarios.length; x++ ) { %>
+                                        <li>
+                                            <a href="/detalle/usuario/<%= postsIndex[i].comentarios[x].usuario %>"> <%= postsIndex[i].comentarios[x].usuario %> </a> 
+                                            <p> <%= postsIndex[i].comentarios[x].texto %></p>
+                                        </li>
+                                    <% } %>
                                     <a href="">Ver más...</a>
                                 </ul>
                             </div>

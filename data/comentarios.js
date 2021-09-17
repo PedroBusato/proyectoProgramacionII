@@ -172,7 +172,16 @@ const comentarios = {
         usuario: "Boneless",
         idUsuario: 7,                             
         idPost: 11                               
+        },
+        {
+        idComentario: 14,
+        texto:"Did not know modern France had goblins",
+        fecha: "1800",
+        usuario: "Boneless",
+        idUsuario: 7,                             
+        idPost: 11                               
         }
+
     ],
     commentsById: function(idPost){
         let array = [];

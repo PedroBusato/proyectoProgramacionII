@@ -8,7 +8,7 @@ const controller = {
         for (let i = 0; i < moduloUsers.lista.length; i++) {
             postsUsuarios.push(moduloPosts.imagesById(moduloUsers.lista[i].id));                                   //Teniamos las vistas muy cargadas de logica, y decidimos traerlas al controller
         }
-        res.render("index", {usuarios: moduloUsers.lista, postsIndex: postsUsuarios, comentarios: moduloComments}) //El orden de los usuarios es igual al de las imagenes, por lo que en el index se veran en el orden correcto
+        res.render("index", {usuarios: moduloUsers.lista, postsIndex: postsUsuarios}) //El orden de los usuarios es igual al de las imagenes, por lo que en el index se veran en el orden correcto
     }, 
     loginPage: function(req, res){
         res.render("login", {message: "juan"})
