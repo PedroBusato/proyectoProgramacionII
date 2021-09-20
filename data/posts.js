@@ -10,7 +10,6 @@
 // 8 --> Diogenes De Sinope
 // 9 --> Napoleon Bonaparte
 
-// En lugar de buscar los comentarios de la foto en las vistas, buscamos los comentarios dentro de cada post!
 const moduloComments = require("../data/comentarios");
 
 const posts = {
@@ -21,7 +20,7 @@ const posts = {
         texto: "Discurso en Opis",
         fecha: "324 aC",
         idUsuario:0,
-        usuario: "alexanderTheGr8",      //Clave foranea para enlazar con los datos de "userModule"
+        usuario: "alexanderTheGr8",                     //Clave foranea para enlazar con los datos de "userModule"
         comentarios: moduloComments.commentsById(0)
         },
         {

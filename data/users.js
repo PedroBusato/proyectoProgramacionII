@@ -8,7 +8,8 @@ const user = {
         contrasena: "hateGreeks",
         foto:"images/alejandroMagnoPerfil.jpg",
         fecha:"21/07/356aC",
-        statusSocial: [210, 192],
+        seguidores: 210,
+        seguidos: 192,
         id: 0
         },
         {
@@ -19,7 +20,8 @@ const user = {
         contrasena: "wannaReturnHome",
         foto:"images/marcoAurelioPerfil.jpg",
         fecha:"26/04/121",
-        statusSocial: [110, 12],
+        seguidores: 110,
+        seguidos: 12,
         id: 1
         },
         {
@@ -30,7 +32,8 @@ const user = {
         contrasena: "LoveMyself",
         foto:"images/gengisKanPerfil.jpg",
         fecha:"16/04/1162",
-        statusSocial: [1100, 1112],
+        seguidores: 1100,
+        seguidos: 1112,
         id: 2
         },
         {
@@ -41,7 +44,8 @@ const user = {
         contrasena: "FishAndChips123",
         foto:"images/winstonChurchillPerfil.jpg",
         fecha:"30/11/1874",
-        statusSocial: [100, 1192],
+        seguidores: 100,
+        seguidos: 1192,
         id: 3
         },        
         {
@@ -52,7 +56,8 @@ const user = {
         contrasena: "CaesarRome123",
         foto:"images/julioCesarPerfil.jpg",
         fecha:"17/09/80aC",
-        statusSocial: [10, 12],
+        seguidores: 10,
+        seguidos: 12,
         id: 4
         },
         {
@@ -63,7 +68,8 @@ const user = {
         contrasena: "MasterOfPlaton",
         foto:"images/socratesPerfil.jpg",
         fecha:"02/12/450aC",
-        statusSocial: [1391, 3123],
+        seguidores: 1391,
+        seguidos: 3123,
         id: 5
         },
         {
@@ -74,7 +80,8 @@ const user = {
         contrasena: "KingOfKings",
         foto:"images/henryViiiPerfil.jpg",
         fecha:"12/05/1522",
-        statusSocial: [1, 21],
+        seguidores: 1,
+        seguidos: 21,
         id: 6
         },
         {
@@ -86,6 +93,8 @@ const user = {
         foto:"images/ivarRagnarssonPerfil.jpg",
         fecha:"09/09/830dC",
         statusSocial: [13931, 97],
+        seguidores: 13931,
+        seguidos: 97,
         id: 7
         },
         {
@@ -96,7 +105,8 @@ const user = {
         contrasena: "AtenasNewHome",
         foto:"images/diogenesDeSinopePerfil.jpg",
         fecha:"28/11/370aC",
-        statusSocial: [9174, 0],
+        seguidores: 9174,
+        seguidos: 0,
         id: 8
         },
         {
@@ -108,6 +118,8 @@ const user = {
         foto:"images/napoleonBonapartePerfil.jpg",
         fecha:"12/12/1799",
         statusSocial: [4194, 2188],
+        seguidores: 4194,
+        seguidos: 2188,
         id: 9
         }, 
 
