@@ -14,14 +14,14 @@
                         <article class="post uk-card-default uk-flex uk-flex-column">
                             <div class="info-usuario uk-flex ">
                                 <div>
-                                    <img src="/<%= usuarios[i].foto%>" alt="">
+                                    <img src="<%= usuarios[i].foto%>" alt="">
                                 </div>
                                 <h4><a href="/profile/userDetail/<%= postsIndex[i].usuario %>"> <%= usuarios[i].usuario %> </a></h4>
                                 
                             </div>
                             <div class="post-body uk-flex uk-flex-center">
                                 <a href="post/detailPost/<%= postsIndex[i].idPost %>">
-                                    <img src="/<%= postsIndex[i].imagen %>" alt=""> <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
+                                    <img src="<%= postsIndex[i].imagen %>" alt=""> <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
                                 </a>
                             </div>
                             <div class="post-reacciones">
@@ -47,7 +47,7 @@
                                     <% } %>
                                     <a href="">Ver más...</a>
                                 </ul>
-                            </div>
+                            </div> 
                         </article>
                     <% } %>              
                 </section>

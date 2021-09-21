@@ -1,13 +1,15 @@
 section.detalle-container{
     border: 1px solid lightgray;
 }
-article.detalle-post{
-    /* border-right: 1px solid lightgray; */
+
+article.detalle-post {
+    /* width: 500px; */
 }
 
 article.detalle-post .imagen-post{
     width: 500px;
     height: 600px;
+    border-right: 1px solid lightgray;
 }
 
 .comentarios-detalle{
@@ -51,19 +53,20 @@ article.detalle-post .imagen-post{
 }
 .comentarios-detalle .lista-comentarios .comentario div img{
     border-radius: 50%;
+    height: 60px;
+    margin-right: 5px;
 }
 
 .comentarios-detalle .lista-comentarios .comentario h6{
-    font-size: 13px;
+    color: white;                       /*Cambiar color de la letra comentarios*/
+    font-size: 15px;                    /*Cambiar tamaño de la letra comentarios*/
     margin-left: 2px !important;
 }
 .comentarios-detalle .lista-comentarios .comentario h6 a{
     font-weight: bolder;
     font-size: 15px;
-    color: black;
+    color: white;                     /*Cambiar color de la letra del usuario que realizo el comentario*/
     text-decoration: none;
     margin-right: 4px !important;
 }
-
-
 
