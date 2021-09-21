@@ -4,8 +4,18 @@
 
 
 header{
+    background-color: rgba(0, 0, 0, 0.486);
+    color: white;
     height: 55px;
     padding-top: 10px;
+}
+footer{
+    background-color: rgba(0, 0, 0, 0.486);
+    color: white;
+    
+}
+footer ul{
+    padding: 10px;
 }
 header section{
     height: 100%;
