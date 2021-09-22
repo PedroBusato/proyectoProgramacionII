@@ -14,7 +14,7 @@
                         <article class="post uk-card-default uk-flex uk-flex-column">
                             <div class="info-usuario uk-flex ">
                                 <div>
-                                    <img src="<%= usuarios[i].foto%>" alt="">
+                                    <a href="/profile/userDetail/<%= postsIndex[i].usuario %>"> <img src="<%= usuarios[i].foto%>" alt="" title="NUEVA PUBLICACIÓN"> </a>
                                 </div>
                                 <h4><a href="/profile/userDetail/<%= postsIndex[i].usuario %>"> <%= usuarios[i].usuario %> </a></h4>
                                 
@@ -46,6 +46,7 @@
                                         </li>
                                     <% } %>
                                     <a href="">Ver más...</a>
+                                    
                                 </ul>
                             </div> 
                         </article>
