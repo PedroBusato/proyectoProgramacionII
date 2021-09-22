@@ -1,18 +1,19 @@
 article.post{
-    border: 1px solid lightgray;
+    border: 2px solid goldenrod;
     border-radius: 10px;
     margin-bottom: 10px;
+  background-color: white;
 }
 
 article.post div.info-usuario{
     padding: 10px;
-    border-bottom: 1px solid lightgray;
-    margin-bottom: 5px;
+    border-bottom: 1px solid goldenrod;
+    margin-bottom: 5px;  
 }
 article.post div.info-usuario img{
     border-radius: 50px;
-    padding: 1px;
-    border: 1.5px solid purple;
+    padding: 1px; 
+    border: 2px solid goldenrod;
 
 }
 article.post div.info-usuario h4{
@@ -26,7 +27,7 @@ article.post div.info-usuario img{
 
 article.post div.post-body{
     padding-bottom: 5px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid goldenrod;
 }
 
 .post-body a{
@@ -48,7 +49,7 @@ article.post div.post-reacciones ul.post-icons{
 
 article.post div.post-reacciones div.post-pie{
     padding-left: 20px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid gold;
     display: flex;
     justify-content: center;
 }
@@ -79,6 +80,7 @@ article.post div.post-comentarios ul li a{
 }
 article.post div.post-comentarios ul li p{
     margin: 0 5px;
+    color: grey;
 }
 
 

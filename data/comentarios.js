@@ -110,7 +110,7 @@ const comentarios = {
         idPost: 7                               
         },
         {
-        idComentario: 10,
+        idComentario: 10 ,
         texto:"Guess you are the problem mate.",
         fecha: "1522",
         usuario: "Boneless",

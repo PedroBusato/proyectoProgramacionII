@@ -8,3 +8,4 @@ let controller = require("../controllers/detalleController");
 // router.get("/usuario/:usuario", controller.user);
 // router.get("/post/:post", controller.post);
 module.exports = router;
+  

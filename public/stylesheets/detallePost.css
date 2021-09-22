@@ -1,25 +1,24 @@
 section.detalle-container{
-    border: 1px solid lightgray;
+    border: 1px solid goldenrod;
 }
 
-article.detalle-post {
-    /* width: 500px; */
-}
+
 
 article.detalle-post .imagen-post{
     width: 500px;
     height: 600px;
-    border-right: 1px solid lightgray;
+    border-right: 1px solid goldenrod;
 }
 
 .comentarios-detalle{
-    border-left: 1px solid lightgray;
+    border-left: 1px solid goldenrod;
+   
 }
 
 .comentarios-detalle .info-post{
     height: 10%;
-    border-bottom: 1px solid lightgray;
-    padding-left: 5px;
+    border-bottom: 1px solid goldenrod;
+    padding-left: 5px; 
 }
 .comentarios-detalle .info-post img{
     border-radius: 50%;
@@ -34,7 +33,7 @@ article.detalle-post .imagen-post{
 .comentarios-detalle .lista-comentarios{
     height: 75%;
     padding-left: 5px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid goldenrod;
     overflow: scroll;
 }
 .comentarios-detalle .lista-comentarios::-webkit-scrollbar{
@@ -50,6 +49,7 @@ article.detalle-post .imagen-post{
 }
 .comentarios-detalle .lista-comentarios .comentario .icono-meGusta{
     font-weight: bolder;
+    color: red;
 }
 .comentarios-detalle .lista-comentarios .comentario div img{
     border-radius: 50%;
@@ -58,14 +58,14 @@ article.detalle-post .imagen-post{
 }
 
 .comentarios-detalle .lista-comentarios .comentario h6{
-    color: white;                       /*Cambiar color de la letra comentarios*/
+    color:black;                       /*Cambiar color de la letra comentarios*/
     font-size: 15px;                    /*Cambiar tamaño de la letra comentarios*/
     margin-left: 2px !important;
 }
 .comentarios-detalle .lista-comentarios .comentario h6 a{
     font-weight: bolder;
     font-size: 15px;
-    color: white;                     /*Cambiar color de la letra del usuario que realizo el comentario*/
+    color: black;                     /*Cambiar color de la letra del usuario que realizo el comentario*/
     text-decoration: none;
     margin-right: 4px !important;
 }
