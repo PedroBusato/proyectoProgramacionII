@@ -6,90 +6,44 @@
 <body>
     <%- include("./partials/headerDeslogueado")%>
     <main>
-        <div class="uk-section uk-section-small">
-            <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">
-               <!-- <div class="formContainerRegister">
-                    <h1>Register Now</h1>
-                    <form class="formRegister" action="/" method="GET">
-                        <div class="line">
-                            <div class="col1">
-                                <label for="name"> Name </label>
-                                <input name="name" class="inputRegister" type="text" placeholder="Name">
-                            </div>
-                            <div class="col2">
-                                <label for="lastname"> Last name </label>
-                                <input name="lastname" class="inputRegister" type="text" placeholder="Last Name">
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="col1 email">
-                                <label for="email"> Email </label>
-                                <input name="email" class="inputRegister" type="text" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="col1">
-                                <label for="password">Password</label>
-                                <input name="password" class="inputRegister" type="password" placeholder="Password">
-                            </div>
-                            <div class="col2">
-                                <label for="passwordRepeat">Password</label>
-                                <input name="passwordRepeat" class="inputRegister" type="password" placeholder="Confirm Password">    
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="col1">
-                                <label for="birth"> Birth date </label>
-                                <input class="inputRegister" name="birth" type="date">
-                            </div>
-                            <div class="col2">
-                                <label for="profilePic"> Select profile picture </label>
-                                <input class="inputRegister file" name="profilePic" type="file">
-                            </div>
-                        </div>
-                        <div class="finalLine">
-                            <button class="buttonRegister" type="submit">Register</button>
-                        </div>
-                    </form>
-                </div>-->
-                <%= message %>
-                <div class="container">  
-                    <form id="contact" action="/" method="GET">
-                      <h3>Register</h3>
-                      <h4>Add User</h4>
-                      <fieldset>
-                        <input placeholder="Name" type="text" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Last Name" type="text" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Username" type="text" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Email" type="email" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Password" type="password" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Confirm Password" type="password" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Birth Date" type="date" tabindex="1"  autofocus>
-                      </fieldset>
-                      <fieldset>
-                        <input placeholder="Profile Picture" type="file" tabindex="2" >
-                      </fieldset>
-                     
-                      <fieldset>
-                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-                      </fieldset>
-                    
-                    </form>
-                  </div>
-            </div>
+      <div class="uk-section uk-section-small">
+        <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">                
+          <div class="container">  
+              <form id="contact" action="/" method="GET">
+                <h3>Register</h3>
+                <h4>Add User</h4>
+                <fieldset>
+                  <input placeholder="Name" type="text" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Last Name" type="text" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Username" type="text" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Email" type="email" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Password" type="password" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Confirm Password" type="password" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Birth Date" type="date" tabindex="1"  autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Profile Picture" type="file" tabindex="2" >
+                </fieldset>
+                
+                <fieldset>
+                  <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                </fieldset>
+              </form>
+          </div>
         </div>
+      </div>
     </main>
 
     <%- include("./partials/footer")%>
