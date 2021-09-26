@@ -10,7 +10,7 @@ const user = {
         fecha:"21/07/356aC",
         seguidores: 210,
         seguidos: 192,
-        id: 0
+        id: 1
         },
         {
         nombre: "Marco",
@@ -22,7 +22,7 @@ const user = {
         fecha:"26/04/121",
         seguidores: 110,
         seguidos: 12,
-        id: 1
+        id: 2
         },
         {
         nombre: "Gengis",
@@ -34,7 +34,7 @@ const user = {
         fecha:"16/04/1162",
         seguidores: 1100,
         seguidos: 1112,
-        id: 2
+        id: 3
         },
         {
         nombre: "Winston",
@@ -46,7 +46,7 @@ const user = {
         fecha:"30/11/1874",
         seguidores: 100,
         seguidos: 1192,
-        id: 3
+        id: 4
         },        
         {
         nombre: "Julio",
@@ -58,19 +58,19 @@ const user = {
         fecha:"17/09/80aC",
         seguidores: 10,
         seguidos: 12,
-        id: 4
+        id: 5
         },
         {
         nombre: "Socrates",
         apellido: "Sofronisco",
         usuario: "writeLessMind",
         email: "SocratesSofronisco@atenas.com",
-        contrasena: "MasterOfPlaton",
+        contrasena: "MasterOfPlato",
         foto:"/images/socratesPerfil.jpg",
         fecha:"02/12/450aC",
         seguidores: 1391,
         seguidos: 3123,
-        id: 5
+        id: 6
         },
         {
         nombre: "Henry",
@@ -82,7 +82,7 @@ const user = {
         fecha:"12/05/1522",
         seguidores: 1,
         seguidos: 21,
-        id: 6
+        id: 7
         },
         {
         nombre: "Ivar",
@@ -95,7 +95,7 @@ const user = {
         statusSocial: [13931, 97],
         seguidores: 13931,
         seguidos: 97,
-        id: 7
+        id: 8
         },
         {
         nombre: "Diogenes",
@@ -107,7 +107,7 @@ const user = {
         fecha:"28/11/370aC",
         seguidores: 9174,
         seguidos: 0,
-        id: 8
+        id: 9
         },
         {
         nombre: "Napoleon",
@@ -120,7 +120,7 @@ const user = {
         statusSocial: [4194, 2188],
         seguidores: 4194,
         seguidos: 2188,
-        id: 9
+        id: 10
         }, 
 
     ],
