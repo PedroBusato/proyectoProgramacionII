@@ -92,7 +92,6 @@ const user = {
         contrasena: "RagnarGod",
         foto:"/images/ivarRagnarssonPerfil.jpg",
         fecha:"09/09/830dC",
-        statusSocial: [13931, 97],
         seguidores: 13931,
         seguidos: 97,
         id: 8
@@ -117,7 +116,6 @@ const user = {
         contrasena: "Greedpower",
         foto:"/images/napoleonBonapartePerfil.jpg",
         fecha:"12/12/1799",
-        statusSocial: [4194, 2188],
         seguidores: 4194,
         seguidos: 2188,
         id: 10

@@ -1,4 +1,4 @@
-const moduloUsers = require("../data/users");
+const moduloUsers = require("../data/users");                //Representan nuestros modelos dentros del patron MVC --> No estan en contacto directo con las vistas
 const moduloPosts = require("../data/posts");
 
 const controller = {
@@ -14,6 +14,10 @@ const controller = {
     },
     registerPage: function(req, res){
         res.render("registracion", {message: "juan"})
+    },
+    showResult: function(req, res){
+        let inputUsuario = req.query.search;             // query.search en lugar de params.search
+        res.render("resultadoBusqueda", {busqueda: inputUsuario});
     }
 }
 

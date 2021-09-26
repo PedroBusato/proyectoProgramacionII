@@ -8,13 +8,13 @@
                 <div class="uk-navbar-center">
                     <ul class="uk-flex uk-flex-between uk-flex-middle">
                         
-                        <li><a href="/registracion">Registro</a></li>
+                        <li><a href="/register">Registro</a></li>
                         <li><a href="/login">Login</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-right">
                     <a href="/post/addPost">Agregar post</a>
-                    <form action="/resultados" method="GET" class="uk-search uk-search-default">                 <!--Action indica donde se envia el formulario, mientra que method indica el metodo http-->
+                    <form action="/results" method="GET" class="uk-search uk-search-default">                 <!--Action indica donde se envia el formulario, mientra que method indica el metodo http-->
                         <span uk-search-icon></span>                                                             <!-- Es necesario que la ruta sea /resultados/:busqueda? o solo /resultados ? Porque al agregar en el "name" del input "busqueda" a secas, me lo agrega automaticamente!-->
                         <input type="search" name="search" class="uk-search-input" placeholder="Buscar...">  <!-- Imprescindible ponerle "name" a los inputs para que representen la clave en la url (el valor de dicha clave sera la busqueda del usuario)-->
                     </form>

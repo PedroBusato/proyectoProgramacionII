@@ -1,14 +1,14 @@
 // Recordemos los idUsuario:
-// 0 --> Alejandro Magno
-// 1 --> Marco Aurelio
-// 2 --> Gengis Kan
-// 3 --> Winston Churchill
-// 4 --> Julio Cesar  
-// 5 --> Socrates Sofronisco
-// 6 --> Henry VIII
-// 7 --> Ivar Ragnarsson
-// 8 --> Diogenes De Sinope
-// 9 --> Napoleon Bonaparte
+// 1 --> Alejandro Magno
+// 2 --> Marco Aurelio
+// 3 --> Gengis Kan
+// 4 --> Winston Churchill
+// 5 --> Julio Cesar  
+// 6 --> Socrates Sofronisco
+// 7 --> Henry VIII
+// 8 --> Ivar Ragnarsson
+// 9 --> Diogenes De Sinope
+// 10 --> Napoleon Bonaparte
 
 
 const comentarios = {
@@ -35,7 +35,7 @@ const comentarios = {
         fecha: "1233",
         usuario: "alexanderTheGr8",
         idUsuario: 1,                             
-        idPost: 3                               
+        idPost: 5                               
         },
         {
         idComentario: 4,
@@ -43,7 +43,7 @@ const comentarios = {
         fecha: "1231",
         usuario: "alexanderTheGr8",
         idUsuario: 1,                             
-        idPost: 3                               
+        idPost: 5                              
         },
         {
         idComentario: 5,

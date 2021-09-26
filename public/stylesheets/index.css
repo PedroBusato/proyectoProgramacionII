@@ -97,7 +97,9 @@ article.post div.post-comentarios ul li p{
     color: grey;
 }
 
-
+article.post div.post-comentarios a{
+  color: goldenrod;
+}
 
 .container {
     max-width: 400px;
