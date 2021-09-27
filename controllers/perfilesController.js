@@ -15,7 +15,7 @@ const controller = {
             postsUsuario = moduloPosts.imagesByUsername(InputUsuario);
             res.render("miPerfil", {infoUsuario: moduloUsers.findUser(InputUsuario), posts: postsUsuario});
         }else{
-            res.render("error", {error: "El usuario o la contraseña no corresponden"}); //Crear la vista "error" de manera apropiada
+            res.render("error", {error: "El usuario o la contraseña no corresponden"}); 
         }
     },
     editProfile: function(req, res){
@@ -28,7 +28,5 @@ const controller = {
         res.render("detalleUsuario", {usuario: usuarioInfo, imagenes: arrayImagenes});   //Por el momento pasamos al informacion del modulo que creamos
     }
 }
-
-
 
 module.exports = controller;

@@ -1,7 +1,3 @@
-// En este archivo las rutas a los perfiles:
-// editarPerfil.ejs
-// miPerfil.ejs
-
 let express = require("express");
 let router = express.Router();
 let controller = require("../controllers/perfilesController")
