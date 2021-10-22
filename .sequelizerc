@@ -1,9 +1,9 @@
-// Aqui indicamos a sequelize en que carpeta estaran almacenados todos nuestros archivos relacionados con la conexion a base de datos
+# Aqui indicamos a sequelize en que carpeta estaran almacenados todos nuestros archivos relacionados con la conexion a base de datos
 
-const path = require('path')
+const path = require('path');
 module.exports = {
     config: path.resolve('./database/config', 'config.js'),
     'models-path': path.resolve('./database/models'),
-    'seeders-path': path.resolve('./database/seeders'),          // --> notemos que aparece "database/" en casi todas las lineas
-    'migrations-path': path.resolve('./database/migrations'),    // --> esto es porque queremos que sequelize nos cree una carpeta database que almanece todo lo de sequelize ahi dentro
+    'seeders-path': path.resolve('./database/seeders'),          # --> notemos que aparece "database/" en casi todas las lineas
+    'migrations-path': path.resolve('./database/migrations'),    # --> esto es porque queremos que sequelize nos cree una carpeta database que almanece todo lo de sequelize ahi dentro
 }

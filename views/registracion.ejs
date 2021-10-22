@@ -10,32 +10,32 @@
       <div class="uk-section uk-section-small">
         <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">                
           <div class="container">  
-              <form id="contact" action="/" method="GET">
+              <form id="contact"  method="POST">
                 <h3>Register</h3>
                 <h4>Add User</h4>
                 <fieldset>
-                  <input placeholder="Name" type="text" tabindex="1"  autofocus>
+                  <input name="firstName" placeholder="Name" type="text" tabindex="1"  autofocus>
                 </fieldset>
                 <fieldset>
-                  <input placeholder="Last Name" type="text" tabindex="1"  autofocus>
+                  <input name="lastName" placeholder="Last Name" type="text" tabindex="1"  autofocus>
                 </fieldset>
                 <fieldset>
-                  <input placeholder="Username" type="text" tabindex="1"  autofocus>
+                  <input name="userName" placeholder="Username" type="text" tabindex="1"  autofocus>
                 </fieldset>
                 <fieldset>
-                  <input placeholder="Email" type="email" tabindex="1"  autofocus>
+                  <input name="email" placeholder="Email" type="email" tabindex="1"  autofocus>
                 </fieldset>
                 <fieldset>
-                  <input placeholder="Password" type="password" tabindex="1"  autofocus>
+                  <input name="password" placeholder="Password" type="password" tabindex="1"  autofocus>
+                </fieldset>
+                <!-- <fieldset>
+                  <input placeholder="Confirm Password" type="password" tabindex="1"  autofocus>  Por el momento lo comentamos porque puede dar problemas a la hora de cargar la infromacion a la base de datos!
+                </fieldset> -->
+                <fieldset>
+                  <input name="birthDate" placeholder="Birth Date" type="date" tabindex="1"  autofocus>
                 </fieldset>
                 <fieldset>
-                  <input placeholder="Confirm Password" type="password" tabindex="1"  autofocus>
-                </fieldset>
-                <fieldset>
-                  <input placeholder="Birth Date" type="date" tabindex="1"  autofocus>
-                </fieldset>
-                <fieldset>
-                  <input placeholder="Profile Picture" type="file" tabindex="2" >
+                  <input name="picture" placeholder="Profile Picture" type="file" tabindex="2" >
                 </fieldset>
                 
                 <fieldset>

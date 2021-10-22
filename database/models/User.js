@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    const alias = "users";       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
+    const alias = "User";       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
 
     const columns = {
         idUser: {
@@ -37,14 +37,15 @@ module.exports = (sequelize, dataTypes) => {
             allowNule: false,
             type: dataTypes.DATE
         },
-        userFollowers: {
-            allowNull: false,
+        userFollowers: {                  //Pehuen dijo que debemos borrar estas dos columnas en un futuro, pero por el momento las dejamos ya que las necesitamos para nuestra vista "detalleUsuario"
+            allowNull: false, 
             type: dataTypes.INTEGER
         },
         usersFollowing: {
             allowNull: false,
             type: dataTypes.INTEGER
         }
+        
     }
     
     const config = {

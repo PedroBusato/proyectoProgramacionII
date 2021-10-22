@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const alias = "comments";       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
+    const alias = "Comment";       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
 
     const columns = {
         idComment: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
     }
     
     const config = {
-        tableName: "comments",          //En caso de querer, podemos especificar el nombre de la tabla a la cual se relaciona nuestro modelo
+        tableName: "comments",          //Debemos especificar el nombre de nuestra tabla tal cual figura en la base de datos
         timestamps: false,
         underscored:false
     }                               //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js

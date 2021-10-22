@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head") %>
+
+<body>
+    <%- include("./partials/headerDeslogueado")%>
+    <main>
+        <div class="uk-section uk-section-small">
+            <div class="uk-container uk-container-large uk-flex">
+                <section id="posts" class="uk-flex uk-flex-middle uk-flex-center uk-flex-column uk-child-width-1-2 uk-width-1-1">
+                    
+                    <% for( let i = 0; i < postsIndex.length; i++ ) { %>
+                        <article class="post uk-card-default uk-flex uk-flex-column">
+                            <div class="info-usuario uk-flex ">
+                                <div>
+                                    <a href="/profile/userDetail/<%= postsIndex[i].userName %>"></a>
+                                </div>
+                                <h4><a href="/profile/userDetail/<%= postsIndex[i].userName %>"> <%= postsIndex[i].userName %> </a></h4>
+                            </div>
+                            <div class="post-body uk-flex uk-flex-center">
+                                <a href="post/detailPost/<%= postsIndex[i].idPost %>">
+                                    <img src="<%= postsIndex[i].image %>" alt="">                                      <!-- Buscamos en nuestra base de datos las imagenes por el id del usuario! Es decir, esta es nuestra clave foranea -->
+                                </a>
+                            </div>
+                            <div class="post-reacciones">
+                                <ul class="post-icons uk-flex uk-flex-between">
+                                    <li><span class="" uk-icon="icon:heart; ratio: 1.3"></span>
+                                    </li>
+                                    <li><span class="" uk-icon="icon:comments; ratio: 1.3"></span>
+                                    </li>
+                                </ul>
+                                <div class="post-pie uk-flex">
+                                    <h5 class="uk-width-1-6"><a href="/profile/userDetail/<%= postsIndex[i].userName %>"><%= postsIndex[i].userName %></a></h5>
+                                    <p class="uk-width-5-6"><%= postsIndex[i].postDescription %></p>
+                                </div>
+                            </div>
+                            <div class="post-comentarios">
+                                <h6>Comentarios</h6>
+                                <ul>
+                                    <% for ( let y = 0; y < commentsIndex.length; y+=1 ) { %>
+                                        <% if(postsIndex[i].idPost == commentsIndex[y].idPost ){ %>
+                                            <li>
+                                                <a href="/profile/userDetail/<%= commentsIndex[y].userName %>"> <%= commentsIndex[y].userName %> </a> 
+                                                <p> <%= commentsIndex[y].commentText %></p>
+                                            </li>
+                                        <% } %> 
+                                    <% } %>
+                                    
+                                    <a href="/post/detailPost/<%= postsIndex[i].idPost %>">Ver más...</a>
+                                    
+                                </ul>
+                            </div> 
+                        </article>
+                    <% } %>              
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <%- include("./partials/footer") %>
+</body>
+
+</html>
