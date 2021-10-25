@@ -2,6 +2,8 @@ const moduloUsers = require("../data/users");
 const moduloPosts = require("../data/posts");
 const moduloComments = require("../data/comentarios");
 const db = require("../database/models");
+const op = db.Sequelize.Op;
+
 
 const controller = {
     addPost: function(req, res){
@@ -22,6 +24,20 @@ const controller = {
         let user = await db.User.findOne({where: {idUser: post.idUser}})
         let users = await db.User.findAll();
         res.render("detallePostCopy", {post, comments, user, users})
+    },
+    detailPostComment: async function(req, res){                                      // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
+        db.Comment.create({
+            idPost: req.params.post,
+            userName: "No aprendimos aun sesion",
+            idUser: 1,                                         //Por el momento, debemos hardcodear el nombre del usuario y su id
+            commentText: req.body.commentText
+        })
+            .then(function(){
+                res.redirect("/post/detailPost/"+req.params.post)
+            })
+            .catch(function(){
+                req.render("error", {error: "No se ha podido publicar el comentario.", ruta: "/post/detailPost/"+req.params.post})
+            })
     },
     // postStore: function(req, res){
 

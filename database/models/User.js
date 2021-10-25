@@ -38,11 +38,11 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATE
         },
         userFollowers: {                  //Pehuen dijo que debemos borrar estas dos columnas en un futuro, pero por el momento las dejamos ya que las necesitamos para nuestra vista "detalleUsuario"
-            allowNull: false, 
+            allowNull: true,              //
             type: dataTypes.INTEGER
         },
         usersFollowing: {
-            allowNull: false,
+            allowNull: true,             //Aceptamos que sean NULL ya que en la vista de registro no solicitamos dicha informacion
             type: dataTypes.INTEGER
         }
         

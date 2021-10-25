@@ -2,6 +2,7 @@ const moduloUsers = require("../data/users");                                   
 const moduloPosts = require("../data/posts");
 const db = require("../database/models");                                             //Requerimos todos nuestros modelos y los guardamos en la constante db
 const bcrypt = require('bcryptjs');
+const op = db.Sequelize.Op;
 
 const controller = {
     // homePage: function(req, res){
@@ -36,23 +37,40 @@ const controller = {
         // res.render("index", { usuarios: users, postsIndex: posts });
     },
 
+    loginPage: function(req, res){
+        res.render("login")
+    },
+
     login: async function(req, res){
-        if (req.method == "POST"){
-            let user = await db.User.findOne({where: {userName: req.body.usuario}}) //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
-            if (!user){
-                res.render("error", {error: "No existe el usuario ingresado"})      //Si no encuentra el usuario en la base de datos, renderiza la vista de error
-            } else {
-                res.render("index")
+        let user = await db.User.findOne({where: {userName: req.body.userName}})      //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
+        if(user){
+            if (bcrypt.compareSync(req.body.userPassword, user.userPassword)) {       //Compara la contraseña que ingresa el usuario con la contraseña de la base de datos, que ya se encuentra hasheada
+                res.redirect("/")
+            } else{
+                res.send("La contraseña es incorrecta. Intente nuevamente")
             }
-            // if (bcrypt.compareSync(req.body.contrasena, user.userPassword)) {
-            //     // Aca deberiamos comenzar la sesion --> Aun no lo vimos
-            // }else{
-            //     render.send("La contraseña es incorrecta")
-            // }
-        } else {
-            res.render("login")
+        } else{
+            res.render("error", {error: "No existe el usuario", ruta:"/login"})
         }
     },
+
+    // login: async function(req, res){
+    //     if (req.method == "POST"){
+    //         let user = await db.User.findOne({where: {userName: req.body.usuario}}) //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
+    //         if (!user){
+    //             res.render("error", {error: "No existe el usuario ingresado"})      //Si no encuentra el usuario en la base de datos, renderiza la vista de error
+    //         } else {
+    //             res.render("index")
+    //         }
+    //         // if (bcrypt.compareSync(req.body.contrasena, user.userPassword)) {
+    //         //     // Aca deberiamos comenzar la sesion --> Aun no lo vimos
+    //         // }else{
+    //         //     render.send("La contraseña es incorrecta")
+    //         // }
+    //     } else {
+    //         res.render("login")
+    //     }
+    // },
 
     // Probar con este metodo en lugar de los then anidados!!!
     // homePage: async function(req, res) {                                
@@ -62,39 +80,46 @@ const controller = {
     //     res.render('users/detalle', { user, posts });
     // },
 
-    loginPage: function(req, res){
-        res.render("login")
-    },
     registerPage: function(req, res){
         res.render("registracion")
     },
     registerStore: function(req, res){                                                //Duda si los inputs del usuario en el formulario deben ir en el mismo orden que las columnas de la tabla
-        req.body.password = bcrypt.hashSync(req.body.password, 10);                   //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
-        db.User.create({
-            userName: req.body.userName,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            userPassword: req.body.password,
-            profilePic: req.body.picture,
-            birthDate: req.body.birthDate,
-        })
+        req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);                   //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
+        db.User.create(
+            req.body                                                                  //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, no es necesario todo el codigo comentado debajo
+            // userName: req.body.userName,
+            // firstName: req.body.firstName,
+            // lastName: req.body.lastName,
+            // email: req.body.email,
+            // userPassword: req.body.userPassword,
+            // profilePic: req.body.profilePic,
+            // birthDate: req.body.birthDate,
+        )
             .then(function(){
                 res.redirect("/")                                                     //Me redirecciona al index una vez que la promesa se cumplio
             }).catch(function(error){
-                return res.render("error", {error})
+                return res.render("error", {error, ruta: "/register"})
             })                                           
     },
-    showResult: function(req, res){
-        let inputUsuario = req.query.search;                                          // query.search en lugar de params.search
-        let coincide = false;
-        for (let x = 0; x < moduloUsers.lista.length; x++) {
-            if(moduloUsers.lista[x].usuario == inputUsuario){coincide = true}
-        }
-        if (coincide == true) {
-            res.render("resultadoBusqueda", {busqueda: moduloUsers.findUser(inputUsuario), imagenes: moduloPosts.imagesByUsername(inputUsuario)});
-        }else{
-            res.render("error", {error: "No hemos encontrado resultados para su busqueda"})
+    // showResult: function(req, res){
+    //     let inputUsuario = req.query.search;                                          // query.search en lugar de params.search
+    //     let coincide = false;
+    //     for (let x = 0; x < moduloUsers.lista.length; x++) {
+    //         if(moduloUsers.lista[x].usuario == inputUsuario){coincide = true}
+    //     }
+    //     if (coincide == true) {
+    //         res.render("resultadoBusqueda", {busqueda: moduloUsers.findUser(inputUsuario), imagenes: moduloPosts.imagesByUsername(inputUsuario)});
+    //     }else{
+    //         res.render("error", {error: "No hemos encontrado resultados para su busqueda", ruta: "/"})
+    //     }
+    // },
+    showResult: async function(req, res){
+        let userInput = req.body.search;
+        const posts = await db.Post.findAll({where: {postDescription: {[op.like]: `%${userInput}%` }} })
+        if (posts) {
+            res.render("resultadoBusqueda", {posts}) //Checkear que la vista funciones bien con lo que pasamos por controlador
+        } else{
+
         }
     }
 }
