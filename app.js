@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require("express-session");                                             //Requerimos el session
+const db = require("./database/models"); 
+
 
 var indexRouter = require('./routes/index');
 var postRouter = require("./routes/post");
@@ -10,16 +13,45 @@ var perfilRouter = require("./routes/perfiles");
 
 var app = express();
 
+// Configuramos el session
+app.use(session( 
+  { secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+    } 
+  }
+));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json());                                                              //Nos convierte la informacion ingresada por formulario en formato json
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static("public"));
+
+// Middleware de Cookies                                                              // En esta funcion middleware refrescamos nuestra sesion a partir de la cookie de nombre userId! --> No se trata de crear la sesion propiamente, sino refrescarla a partir de nuestr cookie!
+app.use( async (req, res, next) => {
+  if (req.cookies.userId != undefined && req.session.user == undefined) {             // Pone en la sessión lo que está en la cookie SÓLO si la sesión está vacía --> permite extender la sesion cuando esta se corta, es decir, cuando hacemos cambios en el codigo
+    let user = await db.User.findByPk(req.cookies.userId);                            // Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
+    req.session.user = user;                                                          // Se trata de req.cookies.userId ya que esta cookie fue creada en el indexController cuando el usuario se loguea
+  }
+  next();
+});
+
+// Middleware de Session
+app.use((req, res, next) => {
+  res.locals.userLogedIn = {}                                                         // Si no entra al if de debajo, envia userLogedIn como un objeto vacio, pero debe enviarlo ya que sino el if de la vista de header no funciona!
+  if (req.session.user != undefined) {                                                // Si estamos en sesion, guarda la informacion del usuario en sesion res.locals.userLoguedIn para enviarla a todas las vistas
+    res.locals.userLogedIn = req.session.user;                                        // Envia a todas las vistas la variable .userLoguedIn
+  }
+  next();
+});
 
 app.use('/', indexRouter);
 app.use("/profile", perfilRouter);

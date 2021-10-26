@@ -22,19 +22,6 @@ const controller = {
         let postsIndex = await db.Post.findAll();                                     //Encuentro todos los posts
         let commentsIndex = await db.Comment.findAll();                               //Encuentro todos los comentarios
         res.render("indexCopy", {postsIndex, commentsIndex})
-
-        // db.Post.findAll()
-        //     .then(function(postsIndex){
-        //         console.log(postsIndex)
-        //         res.render("indexCopy", {postsIndex});  //Renderizamos la vista, pero nos falta algo aun: comentario y foto de perfil de quien realizo el post
-        //     }).catch(function(){
-        //         res.render("error", {error: "Hay un error"})  
-        //     })
-        // 
-        // const posts = await db.Post.findAll(); //No necesitamos por el momento mostrar las fotos de perfil de los usuarios que realizan los posts
-        // // // const postsIndex = await db.User.findByPk(req.params.username);
-        // // const users = await db.Post.findAll({where: {user_id: req.params.username}});
-        // res.render("index", { usuarios: users, postsIndex: posts });
     },
 
     loginPage: function(req, res){
@@ -42,10 +29,12 @@ const controller = {
     },
 
     login: async function(req, res){
-        let user = await db.User.findOne({where: {userName: req.body.userName}})      //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
+        let user = await db.User.findOne({where: {userName: req.body.userName}})            //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
         if(user){
-            if (bcrypt.compareSync(req.body.userPassword, user.userPassword)) {       //Compara la contraseña que ingresa el usuario con la contraseña de la base de datos, que ya se encuentra hasheada
-                res.redirect("/")
+            if (bcrypt.compareSync(req.body.userPassword, user.userPassword)) {             //Compara la contraseña que ingresa el usuario con la contraseña de la base de datos, que ya se encuentra hasheada
+                req.session.user = user;                                                    //Almacena en la propiedad "user" de la session la informacion del usuario que se loguea mediante el formulario --> creamos nuestra sesion!
+                res.cookie("userId", user.idUser, { maxAge: 1000 * 60 * 60 * 24 * 30 });    //Crea una cookie de nombre "userId" donde almacena la id del usuario que se logueo
+                res.redirect("/");
             } else{
                 res.send("La contraseña es incorrecta. Intente nuevamente")
             }
@@ -54,55 +43,28 @@ const controller = {
         }
     },
 
-    // login: async function(req, res){
-    //     if (req.method == "POST"){
-    //         let user = await db.User.findOne({where: {userName: req.body.usuario}}) //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
-    //         if (!user){
-    //             res.render("error", {error: "No existe el usuario ingresado"})      //Si no encuentra el usuario en la base de datos, renderiza la vista de error
-    //         } else {
-    //             res.render("index")
-    //         }
-    //         // if (bcrypt.compareSync(req.body.contrasena, user.userPassword)) {
-    //         //     // Aca deberiamos comenzar la sesion --> Aun no lo vimos
-    //         // }else{
-    //         //     render.send("La contraseña es incorrecta")
-    //         // }
-    //     } else {
-    //         res.render("login")
-    //     }
-    // },
-
-    // Probar con este metodo en lugar de los then anidados!!!
-    // homePage: async function(req, res) {                                
-    //     const postsIndex = await db.User.findByPk(req.params.username);
-    //     const usuarios = await db.Post.findAll({where: {user_id: req.params.username}});
-  
-    //     res.render('users/detalle', { user, posts });
-    // },
+    logout: function(req, res){
+        res.clearCookie('userId');                                                    //Eliminamos nuestra cookie "user"
+        req.session.user = null;                                                      //Acabamos con nuestra sesion        
+        res.redirect('/');
+    }, 
 
     registerPage: function(req, res){
         res.render("registracion")
     },
+
     registerStore: function(req, res){                                                //Duda si los inputs del usuario en el formulario deben ir en el mismo orden que las columnas de la tabla
-        req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);                   //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
-        db.User.create(
-            req.body                                                                  //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, no es necesario todo el codigo comentado debajo
-            // userName: req.body.userName,
-            // firstName: req.body.firstName,
-            // lastName: req.body.lastName,
-            // email: req.body.email,
-            // userPassword: req.body.userPassword,
-            // profilePic: req.body.profilePic,
-            // birthDate: req.body.birthDate,
-        )
+        req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);           //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
+        db.User.create(req.body)                                                      //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, no es necesario todo el codigo comentado debajo
             .then(function(){
                 res.redirect("/")                                                     //Me redirecciona al index una vez que la promesa se cumplio
             }).catch(function(error){
                 return res.render("error", {error, ruta: "/register"})
             })                                           
     },
+
     // showResult: function(req, res){
-    //     let inputUsuario = req.query.search;                                          // query.search en lugar de params.search
+    //     let inputUsuario = req.query.search;                                       // query.search en lugar de params.search
     //     let coincide = false;
     //     for (let x = 0; x < moduloUsers.lista.length; x++) {
     //         if(moduloUsers.lista[x].usuario == inputUsuario){coincide = true}
@@ -113,6 +75,7 @@ const controller = {
     //         res.render("error", {error: "No hemos encontrado resultados para su busqueda", ruta: "/"})
     //     }
     // },
+
     showResult: async function(req, res){
         let userInput = req.body.search;
         const posts = await db.Post.findAll({where: {postDescription: {[op.like]: `%${userInput}%` }} })
