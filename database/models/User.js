@@ -52,9 +52,20 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "users",          //En caso de querer, podemos especificar el nombre de la tabla a la cual se relaciona nuestro modelo
         timestamps: false,           //Como no declaramos la columna "timestamps" ponemos false como valor a la clave
         underscored:false
-    }                               //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
+    }                                //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
 
-    const User = sequelize.define(alias, columns, config)
+    const User = sequelize.define(alias, columns, config);
+
+    User.associate = function(models){
+        User.hasMany(models.Post, {
+            as: "posts",            //En los controllers, cuando llamemos a las asociaciones, debemos llamarlos por este mismo nombre
+            foreignKey: "idUser"
+        }),
+        User.hasMany(models.Comment, {  //Esta relacion no es necesaria! --> Cuando buscamos comentarios, lo hacemos por post, no por user!
+            as: "comments",            
+            foreignKey: "idUser"
+        })
+    }
 
     return User;
 }

@@ -3,17 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require("express-session");                                             //Requerimos el session
+var session = require("express-session");                                             //Requerimos el paquete de session
 const db = require("./database/models"); 
-
 
 var indexRouter = require('./routes/index');
 var postRouter = require("./routes/post");
 var perfilRouter = require("./routes/perfiles");
 
 var app = express();
+// db.sequelize.sync({alter:true})                                                       //Esta linea sincroniza los modelos con la base de datos
 
-// Configuramos el session
+// Configuramos el session -> queremos que la informacion de session este disponible en todas las paginas. En los controladores podriamos poner req.session.nombrePropiedad y guardar informacion en session
 app.use(session( 
   { secret: "secret",
     resave: false,
@@ -44,12 +44,12 @@ app.use( async (req, res, next) => {
   next();
 });
 
-// Middleware de Session
+// Middleware de Session -
 app.use((req, res, next) => {
   res.locals.userLogedIn = {}                                                         // Si no entra al if de debajo, envia userLogedIn como un objeto vacio, pero debe enviarlo ya que sino el if de la vista de header no funciona!
   if (req.session.user != undefined) {                                                // Si estamos en sesion, guarda la informacion del usuario en sesion res.locals.userLoguedIn para enviarla a todas las vistas
     res.locals.userLogedIn = req.session.user;                                        // Envia a todas las vistas la variable .userLoguedIn
-  }
+  }                                                                                   // La asignacion de datos a la variable res.locals debe estar siempre antes de la declaracion de las rutas
   next();
 });
 

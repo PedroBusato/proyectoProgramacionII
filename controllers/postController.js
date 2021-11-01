@@ -9,23 +9,43 @@ const controller = {
     addPost: function(req, res){
         res.render("agregarPost")
     },
-    // detailPost: function(req, res){
-    //     let idPost = req.params.post
-    //     let postInfo = moduloPosts.imagesByPostId(idPost);                                                          //Busco la imagen a traves del postId
-    //     let postComments = moduloComments.commentsById(idPost);                                                     //Busco los comentarios de la imagen a traves del postId
-    //     let user = postInfo.usuario;
-    //     let userInfo = moduloUsers.findUser(user);                                                                  //Busco la informacion del "user" a partir de su nombre de usuario
-    //     res.render("detallePost", {post: postInfo, user: userInfo, comments: postComments, usuarios: moduloUsers}); //Paso el moduloUsers ya que necesito su funcion de encontrar usuarios para poner las fotos de perfil de quienen comentan
+    storePost: function(req, res){
+        if (req.file) {
+            req.body.image = ("/images/"+ req.file.filename);
+            db.Post.create({
+                image: req.body.image,
+                postDescription: req.body.postDescription,
+                idUser: req.session.user.userId
+            })
+        }
+        res.redirect("/")
+    },
+    // detailPost: async function(req, res){                                      // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
+    //     let postId = req.params.post;
+    //     let post = await db.Post.findByPk(postId);
+    //     let comments = await db.Comment.findAll( {where: {idPost: postId}});
+    //     let user = await db.User.findOne({where: {idUser: post.idUser}})
+    //     let users = await db.User.findAll();
+    //     res.render("detallePostCopy", {post, comments, user, users})
     // },
     detailPost: async function(req, res){                                      // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
         let postId = req.params.post;
-        let post = await db.Post.findByPk(postId);
-        let comments = await db.Comment.findAll( {where: {idPost: postId}});
-        let user = await db.User.findOne({where: {idUser: post.idUser}})
-        let users = await db.User.findAll();
-        res.render("detallePostCopy", {post, comments, user, users})
+        let post = await db.Post.findByPk(postId, {
+            include: [{association: "user"}]       
+        });
+        let comments = await db.Comment.findAll({
+            where: {idPost: postId},
+            include: [{association: "user"}]
+        });
+        // let comments = await db.Comment.findAll( {where: {idPost: postId}});
+        // let user = await db.User.findOne({where: {idUser: post.idUser}})
+        // let users = await db.User.findAll();
+        res.render("detallePostCopy", {post, comments})
     },
     detailPostComment: async function(req, res){                                      // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
+        if (!req.session.user){                                                       //Autenticacion --> Verifico que hay un usuario en session
+            res.redirect("/")
+        }
         db.Comment.create({
             idPost: req.params.post,
             userName: "No aprendimos aun sesion",
@@ -36,7 +56,7 @@ const controller = {
                 res.redirect("/post/detailPost/"+req.params.post)
             })
             .catch(function(){
-                req.render("error", {error: "No se ha podido publicar el comentario.", ruta: "/post/detailPost/"+req.params.post})
+                res.render("error", {error: "No se ha podido publicar el comentario.", ruta: "/post/detailPost/"+req.params.post})
             })
     },
     // postStore: function(req, res){

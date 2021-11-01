@@ -26,15 +26,34 @@ module.exports = (sequelize, dataTypes) => {
         userName: {
             allowNull: false,
             type: dataTypes.STRING(150)
+        },
+        createdAt: {
+            type: dataTypes.DATE,      
+        },
+        updatedAt: {
+            type: dataTypes.DATE
         }
     }
     
     const config = {
         tableName: "posts",          //En caso de querer, podemos especificar el nombre de la tabla a la cual se relaciona nuestro modelo
-        timestamps: false,
-        underscored:false
-    }                               //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
+        timestamps: true,            //Habilitamos las columnas createdAt y updatedAt
+        underscored: false           //Decimos que las columnas llevan nombres sin guiones bajos
+    }                                //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
 
     const Post = sequelize.define(alias, columns, config);
+
+    Post.associate = function(models){                      //Se trata de un callback --> La variable "models" trae consigo todos los modelos, pero lo caracteristico es que no hay que requerirlos
+        Post.hasMany(models.Comment, {
+            as: "comments",
+            foreignKey: "idPost"
+        }),
+        Post.belongsTo(models.User, {
+            as: "user",
+            foreignKey: "idUser"
+        })
+    }
+
+
     return Post;
 }

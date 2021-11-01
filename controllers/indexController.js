@@ -32,8 +32,8 @@ const controller = {
         let user = await db.User.findOne({where: {userName: req.body.userName}})            //Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
         if(user){
             if (bcrypt.compareSync(req.body.userPassword, user.userPassword)) {             //Compara la contraseña que ingresa el usuario con la contraseña de la base de datos, que ya se encuentra hasheada
-                req.session.user = user;                                                    //Almacena en la propiedad "user" de la session la informacion del usuario que se loguea mediante el formulario --> creamos nuestra sesion!
-                res.cookie("userId", user.idUser, { maxAge: 1000 * 60 * 60 * 24 * 30 });    //Crea una cookie de nombre "userId" donde almacena la id del usuario que se logueo
+                req.session.user = user;                                                    //Almacena en la propiedad "user" de la session la informacion del usuario que se loguea mediante el formulario --> creamos nuestra sesion, a la cual podemos acceder desde los distintos archivos js!
+                res.cookie("userId", user.idUser, { maxAge: 1000 * 60 * 60 * 24 * 30 });    //Crea una cookie de nombre "userId" donde almacena la id del usuario que se logueo --> se convierte en el identificador de nuestro usuario
                 res.redirect("/");
             } else{
                 res.send("La contraseña es incorrecta. Intente nuevamente")

@@ -4,45 +4,21 @@
 <%- include("./partials/head")%>
 
 <body>
-    <%- include("./partials/headerLogueado") %>
+    <%- include("./partials/header") %>
 
     <main>
+      <% if(userLogedIn.userName){%>
         <div class="uk-section uk-section-small">
             <div class="uk-container uk-container-large uk-flex">
-             <!--    <div class="formContainerRegister">
-                    <h1>Add Post</h1>
-     
-               <form class="formRegister" action="/" method="GET">
-                    <div class="line">
-                        <div class="col1">
-                            <label for="title"> Title </label>
-                            <input name="title" class="inputRegister" type="text" placeholder="title">
-                        </div>
-                       
-                    </div>
-                    <div class="line">
-                        <div class="col1">
-                            <label for="postPic"> post picture </label>
-                            <input class="inputRegister file" name="profilePic" type="file">
-                        </div>
-                    </div>
-                    
-                    <div class="finalLine">
-                        <button class="buttonRegister" type="submit">Add Post</button>
-                    </div>
-                </form>
-</div>-->
-            </div>
-
-            <div class="container">  
-                <form id="contact" action="/" method="GET">
+              <div class="container">  
+                <form id="contact" method="POST" enctype="multipart/form-data">
                   <h3>Add Post</h3>
                   <h4></h4>
                   <fieldset>
-                    <input placeholder="Description" type="text" tabindex="1"  autofocus>
+                    <input name="postDescription" placeholder="Description" type="text" tabindex="1"  autofocus>
                   </fieldset>
                   <fieldset>
-                    <input placeholder="Image" type="file" tabindex="2" >
+                    <input name="image" placeholder="Image" type="file" tabindex="2" >
                   </fieldset>
                  
                   <fieldset>
@@ -51,10 +27,19 @@
                 
                 </form>
               </div>
-
+            </div>    
         </div>
-    </main>
     
+      <% } else{ %>
+        <div class="uk-section uk-section-small">
+          <div class="uk-container uk-container-large uk-flex">
+            <div class="container">  
+              <h3> <a href="/register">Regístrate</a> o <a href="/login">inicia sesión</a> para agregar posts a tu perfil</h3>
+            </div>
+          </div>    
+      </div>
+      <% } %>
+    </main>
     <%- include("./partials/footer") %>
 </body>
 
