@@ -58,11 +58,7 @@ module.exports = (sequelize, dataTypes) => {
 
     User.associate = function(models){
         User.hasMany(models.Post, {
-            as: "posts",            //En los controllers, cuando llamemos a las asociaciones, debemos llamarlos por este mismo nombre
-            foreignKey: "idUser"
-        }),
-        User.hasMany(models.Comment, {  //Esta relacion no es necesaria! --> Cuando buscamos comentarios, lo hacemos por post, no por user!
-            as: "comments",            
+            as: "posts",                        //En los controllers, cuando llamemos a las asociaciones, debemos llamarlos por este mismo nombre
             foreignKey: "idUser"
         })
     }

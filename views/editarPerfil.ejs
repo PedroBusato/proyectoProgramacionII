@@ -4,34 +4,38 @@
 <%- include("./partials/head") %>
 
 <body>
-    <%- include("./partials/headerLogueado") %>
+    <%- include("./partials/header") %>
 
     <main>
       <div class="uk-section uk-section-small">
         <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">
           <div class="container">  
-            <form id="contact" action="/" method="GET">
+            <form id="contact" method="POST" enctype="multipart/form-data">
               <h3>Edit Profile</h3>
               <h4></h4>
               
               <fieldset>
-                <input placeholder="Username" type="text" tabindex="1"  autofocus>
+                <input name="userName" placeholder="Username" type="text" tabindex="1"  autofocus>
               </fieldset>
               
               <fieldset>
-                <input placeholder="Email" type="email" tabindex="1"  autofocus>
+                <input name="email" placeholder="Email" type="email" tabindex="1"  autofocus>
               </fieldset>
 
               <fieldset>
-                <input placeholder="New Password" type="password" tabindex="1"  autofocus>
+                <input name="userPassword" placeholder="Old Password" type="password" tabindex="1"  autofocus>
               </fieldset>
 
               <fieldset>
-                <input placeholder="Confirm Password" type="password" tabindex="1"  autofocus>
+                <input name="newPassword" placeholder="New Password" type="password" tabindex="1"  autofocus>
+              </fieldset>
+
+              <fieldset>
+                <input name="confirmPassword" placeholder="Confirm Password" type="password" tabindex="1"  autofocus>
               </fieldset>
               
               <fieldset>
-                <input placeholder="Profile Picture" type="file" tabindex="2" >
+                <input name="profilePic" placeholder="Profile Picture" type="file" tabindex="2" >
               </fieldset>
               
               <fieldset>

@@ -19,13 +19,21 @@ const controller = {
     // }, 
 
     homePage: async function(req, res) {  
-        let postsIndex = await db.Post.findAll();                                     //Encuentro todos los posts
-        let commentsIndex = await db.Comment.findAll();                               //Encuentro todos los comentarios
-        res.render("indexCopy", {postsIndex, commentsIndex})
+        let posts = await db.Post.findAll({ 
+            include: [
+                { association: 'user' },
+                { association: 'comments', include: [{ association: 'user' }] }
+            ]})                                   
+        // let commentsIndex = await db.Comment.findAll();                               
+        res.render("indexCopy", { posts })
     },
 
     loginPage: function(req, res){
-        res.render("login")
+        if (req.session.user == undefined){
+            res.render("login")
+        } else {
+            res.redirect("/")
+        }
     },
 
     login: async function(req, res){
@@ -33,7 +41,7 @@ const controller = {
         if(user){
             if (bcrypt.compareSync(req.body.userPassword, user.userPassword)) {             //Compara la contraseña que ingresa el usuario con la contraseña de la base de datos, que ya se encuentra hasheada
                 req.session.user = user;                                                    //Almacena en la propiedad "user" de la session la informacion del usuario que se loguea mediante el formulario --> creamos nuestra sesion, a la cual podemos acceder desde los distintos archivos js!
-                res.cookie("userId", user.idUser, { maxAge: 1000 * 60 * 60 * 24 * 30 });    //Crea una cookie de nombre "userId" donde almacena la id del usuario que se logueo --> se convierte en el identificador de nuestro usuario
+                res.cookie("userId", user.idUser, { maxAge: 1000 * 60 * 60 * 24 * 30 });    //Crea una cookie de nombre "userId" donde almacena la id del usuario que se logueo --> se convierte en el identificador de nuestro usuario. En este caso, "user" refiere a la variable declarada en la linea 38, NO a la propiedad "user" de nuestra session
                 res.redirect("/");
             } else{
                 res.send("La contraseña es incorrecta. Intente nuevamente")
@@ -50,10 +58,14 @@ const controller = {
     }, 
 
     registerPage: function(req, res){
+        if (!req.session.user){
         res.render("registracion")
+        } else{
+            res.redirect("/")
+        }
     },
 
-    registerStore: function(req, res){                                                //Duda si los inputs del usuario en el formulario deben ir en el mismo orden que las columnas de la tabla
+    registerStore: function(req, res){                                                
         req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);           //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
         db.User.create(req.body)                                                      //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, no es necesario todo el codigo comentado debajo
             .then(function(){

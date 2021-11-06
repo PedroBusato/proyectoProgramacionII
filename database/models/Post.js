@@ -12,11 +12,11 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(500)
         },
         postDescription: {
-            allowNule: false,
+            allowNule: true,
             type: dataTypes.STRING(500)
         },
         postedDate: {
-            allowNull: false,
+            allowNull: true,
             type: dataTypes.DATE
         },
         idUser: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER
         },
         userName: {
-            allowNull: false,
+            allowNull: true,
             type: dataTypes.STRING(150)
         },
         createdAt: {

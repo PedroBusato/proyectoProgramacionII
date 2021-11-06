@@ -1,26 +1,50 @@
 const moduloUsers = require("../data/users");
 const moduloPosts = require("../data/posts");
 const db = require("../database/models");
+const bcrypt = require('bcryptjs');
 
 const controller = {
-    myProfile: function(req, res){
-        let coincide = false;
-        let InputUsuario = req.query.usuario;
-        let InputContrasena = req.query.contrasena;
-        for (let i = 0; i < moduloUsers.lista.length; i++) {
-            if (moduloUsers.lista[i].usuario == InputUsuario && moduloUsers.lista[i].contrasena == InputContrasena) {
-                coincide = true;
-            }  
-        };
-        if (coincide == true){
-            postsUsuario = moduloPosts.imagesByUsername(InputUsuario);
-            res.render("miPerfil", {infoUsuario: moduloUsers.findUser(InputUsuario), posts: postsUsuario});
+    myProfile: async function(req, res){
+        if (req.session.user) {                                                      // Recordemos que "req.session.user" es la propiedad de la session, accesible en todos los archivos
+            let user = await db.User.findOne( 
+                {where: {userName: req.params.user},                             
+                include: [{association: "posts"}] } 
+            )                            
+            res.render("miPerfil", {user})
         }else{
-            res.render("error", {error: "El usuario o la contraseña no corresponden"}); 
+            res.redirect("/")
         }
     },
+
+    editProfileView: function(req, res){
+        if (req.session.user) {
+            res.render("editarPerfil", {user: moduloUsers.lista[1]});
+        }else{
+            res.redirect("/")
+        }
+    },
+
     editProfile: function(req, res){
-        res.render("editarPerfil", {user: moduloUsers.lista[1]});
+        if (req.session.user) {
+            if (req.file) {
+                req.body.profilePic = "/images/"+ req.file.filename;                                                      //Cambiamos el nombre del archivos de la foto de perfil
+            }
+            let user = req.session.user;                                                                                  //Usuario en session!
+            if ( user.userName == req.body.userName && bcrypt.compareSync(req.body.userPassword, user.userPassword) ) {   //Verificamos que el usuario en session sea el mismo que esta modificando el perfil
+                if (req.body.newPassword.length > 0 && (req.body.newPassword == req.body.confirmPassword)) {                                                   //Las contraseñas introudcidas por el
+                    db.User.update({                                                          
+                        userPassword: bcrypt.hashSync(req.body.newPassword, 10),
+                        profilePic: req.body.profilePic
+                    },
+                    {
+                        where:{
+                            idUser: req.session.user.idUser
+                        }
+                    })
+                }
+            }    
+        }
+        res.redirect("/")
     },
     // detailUser: function(req, res){
     //     let usuario = req.params.user;
