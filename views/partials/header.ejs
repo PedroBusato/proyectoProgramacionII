@@ -1,27 +1,25 @@
 <% if (userLogedIn.userName){ %>                                                                                 <!-- La variable userLogedIn pertenece al objeto res.locals, la cual se crea en app.js cuando el usuario esta logueado unicamente -->                                                                                                                           
     <header class="">                                                                                            <!-- Debemos colocar userLogedIn.propiedad, sea cual sea para que funcione efectivamente el condicional if -->
-        <section class=" uk-container uk-container-large">
-            <div class="">
-                <nav class="" uk-navbar>
-                    <div class="uk-navbar-left">
-                        <h2 class="logo"><a href="/">Histogram </a></h2>
-                    </div>
-                    <div class="uk-navbar-center">
-                        <ul class="uk-flex uk-flex-between uk-flex-middle">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </div>
-                    <div class="uk-navbar-right">
-                        <a href="/post/addPost">Agregar post</a>
-                        <a href="/profile/myProfile/<%= userLogedIn.userName %>">Mi perfil</a>                                                                  
-                        <form method="POST" class="uk-search uk-search-default">                                 <!--Action indica donde se envia el formulario, mientra que method indica el metodo http-->
-                            <span uk-search-icon></span>                                                         <!-- Es necesario que la ruta sea /resultados/:busqueda? o solo /resultados ? Porque al agregar en el "name" del input "busqueda" a secas, me lo agrega automaticamente!-->
-                            <input type="search" name="search" class="uk-search-input" placeholder="Buscar...">  <!-- Imprescindible ponerle "name" a los inputs para que representen la clave en la url (el valor de dicha clave sera la busqueda del usuario)-->
-                        </form>
-                    </div>
-                </nav>
-            </div>
+        <section class="">                      <!-- class="uk-container uk-container-large" -->
+            <nav class="navbar" uk-navbar>
+                <div class="uk-navbar-left">
+                    <h2 class="logo"><a href="/">Histogram </a></h2>
+                </div>
+                <div class="uk-navbar-center">
+                    <ul class="uk-flex uk-flex-between uk-flex-middle">
+                        <li><a href="/profile/myProfile/<%= userLogedIn.userName %>">Bienvenido @<%= userLogedIn.userName %></a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    <a href="/post/addPost">Agregar post</a>
+                    <a href="/profile/myProfile/<%= userLogedIn.userName %>">Mi perfil</a>                                                                  
+                    <form method="get" action="/results" class="uk-search uk-search-default">                                 <!--Action indica donde se envia el formulario, mientra que method indica el metodo http-->
+                        <span uk-search-icon></span>                                                         <!-- Es necesario que la ruta sea /resultados/:busqueda? o solo /resultados ? Porque al agregar en el "name" del input "busqueda" a secas, me lo agrega automaticamente!-->
+                        <input type="search" name="search" class="uk-search-input" placeholder="Buscar...">  <!-- Imprescindible ponerle "name" a los inputs para que representen la clave en la url (el valor de dicha clave sera la busqueda del usuario)-->
+                    </form>
+                </div>
+            </nav>
         </section>
     </header>
 <%} else { %>
@@ -40,9 +38,9 @@
                     </ul>
                 </div>
                 <div class="uk-navbar-right">
-                    <form method="POST" class="uk-search uk-search-default">                                 <!--Action indica donde se envia el formulario, mientra que method indica el metodo http-->
-                        <span uk-search-icon></span>                                                         <!-- Es necesario que la ruta sea /resultados/:busqueda? o solo /resultados ? Porque al agregar en el "name" del input "busqueda" a secas, me lo agrega automaticamente!-->
-                        <input type="search" name="search" class="uk-search-input" placeholder="Buscar...">  <!-- Imprescindible ponerle "name" a los inputs para que representen la clave en la url (el valor de dicha clave sera la busqueda del usuario)-->
+                    <form method="get" action="/results" class="uk-search uk-search-default">                                 <!--Action indica donde se envia el formulario, mientra que method indica el metodo http-->
+                        <span uk-search-icon></span>                                                                          <!-- Es necesario que la ruta sea /resultados/:busqueda? o solo /resultados ? Porque al agregar en el "name" del input "busqueda" a secas, me lo agrega automaticamente!-->
+                        <input type="search" name="search" id="search" class="uk-search-input" placeholder="Buscar...">       <!-- Imprescindible ponerle "name" a los inputs para que representen la clave en la url (el valor de dicha clave sera la busqueda del usuario)-->
                     </form>
                 </div>
             </nav>

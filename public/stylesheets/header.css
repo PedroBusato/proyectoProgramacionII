@@ -49,6 +49,12 @@ header ul{
     padding: 0;
     list-style: none;
 }
+header nav.navbar{
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin: 0px 5% 0px 5%;
+}
 header div.uk-navbar-center ul li{
     padding: 0 10px;
     border-right: 1px solid black;

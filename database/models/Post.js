@@ -17,7 +17,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         postedDate: {
             allowNull: true,
-            type: dataTypes.DATE
+            type: dataTypes.DATE                  //Podriamos eliminar esta columna del modelo y de la tabla ya que tenemos la columna de created at
         },
         idUser: {
             allowNull: false,
@@ -51,7 +51,11 @@ module.exports = (sequelize, dataTypes) => {
         Post.belongsTo(models.User, {
             as: "user",
             foreignKey: "idUser"
-        })
+        }),
+        Post.hasMany(models.Like, {
+            as: 'likes',
+            foreignKey: 'idPost'
+        });
     }
 
 

@@ -1,0 +1,32 @@
+.results-searchUser{
+    background-color: greenyellow;
+    display: flex;
+    width: 700px;
+    height: 300px;
+}
+
+.results-searchUser .column1-results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.results-searchUser .column1-results a{
+    text-decoration: none;
+}
+
+.results-searchUser .column1-results h1{
+    font-size: 30px;
+    color: red;
+}
+
+.results-searchUser .postPic{
+    height: 300px;
+}
+
+.results-searchUser .profilePic{
+    height: 200px;
+    border-radius: 50%;
+}

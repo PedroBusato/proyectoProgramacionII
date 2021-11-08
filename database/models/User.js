@@ -44,7 +44,13 @@ module.exports = (sequelize, dataTypes) => {
         usersFollowing: {
             allowNull: true,             //Aceptamos que sean NULL ya que en la vista de registro no solicitamos dicha informacion
             type: dataTypes.INTEGER
-        }
+        },
+        // createdAt: {
+        //     type: dataTypes.DATE,      
+        // },
+        // updatedAt: {
+        //     type: dataTypes.DATE
+        // }
         
     }
     
@@ -60,7 +66,16 @@ module.exports = (sequelize, dataTypes) => {
         User.hasMany(models.Post, {
             as: "posts",                        //En los controllers, cuando llamemos a las asociaciones, debemos llamarlos por este mismo nombre
             foreignKey: "idUser"
+        }),
+        User.hasMany(models.Follow, {
+            as: "followers",                     
+            foreignKey: "idFollowing"
+        }),
+        User.hasMany(models.Follow, {
+            as: "followings",                       
+            foreignKey: "idFollower"
         })
+
     }
 
     return User;

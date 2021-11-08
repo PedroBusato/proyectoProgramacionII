@@ -11,7 +11,7 @@
                 <section id="posts" class="uk-flex uk-flex-middle uk-flex-center uk-flex-column uk-child-width-1-2 uk-width-1-1">
                     
                     <% for( let i = 0; i < posts.length; i++ ) { %>
-                        <article class="post uk-card-default uk-flex uk-flex-column">
+                        <article class="post uk-card-default uk-flex uk-flex-column" id="post_<%= posts[i].idPost %>">
                             <div class="info-usuario uk-flex ">
                                 <div>
                                     <a href="/profile/userDetail/<%= posts[i].userName %>"></a>
@@ -25,8 +25,16 @@
                             </div>
                             <div class="post-reacciones">
                                 <ul class="post-icons uk-flex uk-flex-between">
-                                    <li><span class="" uk-icon="icon:heart; ratio: 1.3"></span>
-                                    </li>
+                                    <% if(posts[i].likes.find(like => like.idUser == userLogedIn.idUser)){ %>
+                                        <li><a href="/index/<%= posts[i].idPost %>/dislike">
+                                            <span class="" uk-icon="icon:comments; ratio: 1.3"></span>
+                                        </a></li>
+                                    <% }else{ %>
+                                        <li><a href="/index/<%= posts[i].idPost %>/like">
+                                            <span class="" uk-icon="icon:heart; ratio: 1.3"></span>
+                                        </a></li>
+                                    <% } %>
+                                    
                                     <li><span class="" uk-icon="icon:comments; ratio: 1.3"></span>
                                     </li>
                                 </ul>
