@@ -7,6 +7,11 @@ const upload = multer({dest: "public/images/"});                                
 router.get("/addPost", controller.addPost);                                           //El parametro "image" que recibe la funcion representa el nombre del input del formulario!!!!
 router.post("/addPost",  upload.single("image"), controller.storePost);               //Desde el controlador podemos acceder a la informacion del archivo mediante req.file
 
+router.get("/deletePost/:post", controller.deletePost);
+
+router.get("/editPost/:post", controller.editPost);
+router.post("/editPost/:post", upload.single("image"), controller.updatePost);
+
 router.get("/detailPost/:post", controller.detailPost);
 router.post("/detailPost/:post", controller.detailPostComment);
 

@@ -1,15 +1,18 @@
 .results-searchUser{
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
     display: flex;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 5px;
     width: 700px;
-    height: 300px;
+    height: 350px;
 }
 
 .results-searchUser .column1-results{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 5px;
 }
 
@@ -22,11 +25,44 @@
     color: red;
 }
 
+.results-searchUser .column2-results{
+    display: flex;
+    background-color: lightgreen;
+    flex-direction: column;
+}
+
 .results-searchUser .postPic{
     height: 300px;
+    border-radius: 5px;
 }
 
 .results-searchUser .profilePic{
     height: 200px;
     border-radius: 50%;
+}
+
+.card .btn-primary, .results-searchUser .btn-primary {
+    background-color: gold;
+    border-color: black;
+}
+
+.parent-container-users{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: yellow;
+}
+
+.parent-container-users .card{
+    flex: 1 0 20%; 
+    margin: 15px;
+    height: auto;
+    max-width: 20%;
+    /* background-color: blue; */
+}
+
+.parent-container-users .card img{
+    width: 100%;
+    height: 400px;
 }

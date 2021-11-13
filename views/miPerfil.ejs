@@ -19,9 +19,9 @@
                         </div>
                         <div>
                             <ul class="red-usuario uk-flex uk-flex-between uk-width-1-2">
-                                <li><%= user.length %> posts</li>
-                                <li><%= user.userFollowers %> seguidores</li>
-                                <li><%= user.usersFollowing %> seguidos</li>
+                                <li>posts: <%= user.posts.length %> </li>
+                                <li>seguidores: <%= user.followers.length %> </li>
+                                <li>seguidos: <%= user.followings.length %> </li>
                             </ul>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             <div class="uk-card uk-card-hover uk-card-body uk-flex uk-flex-column uk-flex-middle uk-flex-center ">
                                 <a href="/post/detailPost/<%= user.posts[i].idPost%>" class="link-detalle">
                                     <img src="<%= user.posts[i].image %>" alt="foto de perfil" class="foto-perfil">
-                                    <p class="uk-text-center"> <%= user.posts[i].texto %> </p>
+                                    <p class="uk-text-center"> <%= user.posts[i].postDescription %> </p>
                                 </a>
                             </div>
                         <% } %>

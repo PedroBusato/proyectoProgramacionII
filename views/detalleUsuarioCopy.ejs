@@ -16,24 +16,30 @@
                         <div class="uk-flex uk-flex-middle"> 
                             <h3 class="uk-margin-remove"> <%= user.userName %></h3>
                             <a href="/profile/editProfile" uk-icon="cog"></a>
-                            <button class="uk-button uk-button-small uk-button-primary uk-margin-left">Seguir</button>
+
+                            <% if (user.followers.find(follower => follower.idFollower == userLogedIn.idUser)) { %>
+                                <a href="/profile/userDetail/unfollowUser/<%=user.userName%>"> <button class="uk-button uk-button-small uk-button-primary uk-margin-left" style="background-color: red;">Dejar de Seguir</button> </a>
+                            <% } else { %>
+                                <a href="/profile/userDetail/followUser/<%=user.userName%>"> <button class="uk-button uk-button-small uk-button-primary uk-margin-left">Seguir</button> </a>
+                            <% } %>     
+
                         </div>
                         <div>
                             <ul class="red-usuario uk-flex uk-flex-between uk-width-1-2">
-                                <li><%= images.length %> posts</li>
-                                <li><%= user.userFollowers %> seguidores</li>
-                                <li><%= user.usersFollowing %> seguidos</li>
+                                <li>posts: <%= user.posts.length %></li>
+                                <li>seguidores: <%= user.followers.length %></li>
+                                <li>seguidos: <%= user.followings.length %></li>
                             </ul>
                         </div>
                     </div>
                </section>
                <section class="muro uk-flex uk-flex-middle uk-flex-center">
                     <div class="uk-grid uk-child-width-1-3 uk-width-1-1 uk-margin-remove" uk-grid>
-                        <% for( let i = 0; i < images.length; i++ ) { %>
+                        <% for( let i = 0; i < user.posts.length; i++ ) { %>
                             <div class="uk-card uk-card-hover uk-card-body uk-flex uk-flex-column uk-flex-middle uk-flex-center ">
-                                <a href="/post/detailPost/<%=images[i].idPost%>" class="link-detalle">
-                                    <img src="<%= images[i].image %>" alt="agregar en el modulo posts.js un atributo de descripcion" class="foto-perfil">
-                                    <p class="uk-text-center"><%= images[i].postDescription %></p>
+                                <a href="/post/detailPost/<%=user.posts[i].idPost%>" class="link-detalle">
+                                    <img src="<%= user.posts[i].image %>" alt="agregar en el modulo posts.js un atributo de descripcion" class="foto-perfil">
+                                    <p class="uk-text-center"><%= user.posts[i].postDescription %></p>
                                 </a>
                             </div>
                         <% } %>

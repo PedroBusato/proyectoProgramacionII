@@ -6,12 +6,24 @@
     <main>
         <%- include("./partials/header") %>
 
-        <div class="mainDiv">
-            <div class="div">
-                <h1><%= error %></h1>
-                <a href="#""> <h2>Intente Nuevamente</h2> </a>
-            </div> 
-        </div>
+        <% if (typeof error == "string") { %>
+            <div class="mainDiv">
+                <div class="alert alert-warning" role="alert">
+                    <h1><%=error%></h1>
+                    <a href="#"> <h2>Intente Nuevamente</h2> </a>
+                </div> 
+            </div>
+        <% }else { %>
+            <div class="mainDiv">
+                <div class="alert alert-warning" role="alert">
+                    <% for (let i = 0; i < error.length; i++) { %>
+                            <h1><%= error[i] %></h1>
+                            <br>
+                    <% } %>
+                    <a href="#"> <h2>Intente Nuevamente</h2> </a>
+                </div>
+            </div>
+        <% } %>
     </main>
 
     <%- include("./partials/footer") %>

@@ -16,6 +16,12 @@
                         <div class="info-post uk-flex uk-flex-middle">
                             <img src="<%= post.user.profilePic%>" alt="Foto del usuario">
                             <h3><a href="/profile/userDetail/<%= post.user.userName %>"><%= post.user.userName %></a></h3>
+                            
+                            <% if(userLogedIn.idUser == post.user.idUser){ %>
+                                <a href="/post/deletePost/<%=post.idPost%>"> <span uk-icon="trash" style="color: red;"></span> </a>
+                                <a href="/post/editPost/<%=post.idPost%>"> <span uk-icon="cog"></span> </a>
+                            <% } %>
+                            
                         </div>
                         <div class="lista-comentarios" >
                             <% for( let i = 0; i < post.comments.length; i++ ) { %>
@@ -33,8 +39,8 @@
                         
                         <div class="agregar-comentario uk-flex uk-flex-middle">
                             <form method="POST" class="uk-text-center">
-                              <input name="commentText" type="text" class="uk-input" placeholder="Agregar comentario"> 
-                              <button class="uk-button uk-button-primary uk-margin-small-top" type="submit">Comentar</button>
+                                <input name="commentText" type="text" class="uk-input" placeholder="Agregar comentario"> 
+                                <button class="uk-button uk-button-primary uk-margin-small-top" type="submit">Comentar</button>
                             </form>
                         </div>
                     </article>

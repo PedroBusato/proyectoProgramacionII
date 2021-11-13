@@ -6,11 +6,15 @@
     align-items: center;
 }
 
-.div{
-    background-color: wheat;
+.mainDiv .alert-warning{
+    background-color: rgb(255, 216, 89);
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 250px;
+    height: auto;
+    border-radius: 5px;
 }
 
+.mainDiv .alert-warning a{
+    text-decoration: none;
+}

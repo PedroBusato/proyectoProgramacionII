@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head") %>
+
+<body>
+    <%- include("./partials/header") %>
+
+    <main>
+      <div class="uk-section uk-section-small">
+        <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center">
+          <div class="container">  
+            <form id="contact" method="POST" enctype="multipart/form-data">
+              <h3>Edit Post</h3>
+              <h4></h4>
+              
+              <fieldset>
+                <input name="postDescription" placeholder="Cambiar descripcion del post" type="text" tabindex="1"  autofocus>
+              </fieldset>
+              
+              <fieldset>
+                <input name="image" placeholder="Cambiar post" type="file" tabindex="2" >
+              </fieldset>
+              
+              <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+              </fieldset>
+            
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include("./partials/footer") %>
+
+
+</body>
+
+</html>

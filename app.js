@@ -41,7 +41,7 @@ app.use( async (req, res, next) => {
     let user = await db.User.findByPk(req.cookies.userId);                            // Buscamos el usuario mediante el nombre de usuario que se ingresa en el input del formulario
     req.session.user = user;                                                          // Se trata de req.cookies.userId ya que esta cookie fue creada en el indexController cuando el usuario se loguea
   }
-  next();
+  next(); 
 });
 
 // Middleware de Session -

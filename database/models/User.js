@@ -45,18 +45,18 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: true,             //Aceptamos que sean NULL ya que en la vista de registro no solicitamos dicha informacion
             type: dataTypes.INTEGER
         },
-        // createdAt: {
-        //     type: dataTypes.DATE,      
-        // },
-        // updatedAt: {
-        //     type: dataTypes.DATE
-        // }
+        createdAt: {
+            type: dataTypes.DATE,      
+        },
+        updatedAt: {
+            type: dataTypes.DATE
+        }
         
     }
     
     const config = {
         tableName: "users",          //En caso de querer, podemos especificar el nombre de la tabla a la cual se relaciona nuestro modelo
-        timestamps: false,           //Como no declaramos la columna "timestamps" ponemos false como valor a la clave
+        timestamps: true,           
         underscored:false
     }                                //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
 

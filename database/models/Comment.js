@@ -26,12 +26,18 @@ module.exports = (sequelize, dataTypes) => {
         idUser: {
             allowNull: false,
             type: dataTypes.INTEGER
+        },
+        createdAt: {
+            type: dataTypes.DATE,      
+        },
+        updatedAt: {
+            type: dataTypes.DATE
         }
     }
     
     const config = {
         tableName: "comments",          //Debemos especificar el nombre de nuestra tabla tal cual figura en la base de datos
-        timestamps: false,
+        timestamps: true,
         underscored:false
     }                               //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
 

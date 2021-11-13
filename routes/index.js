@@ -16,7 +16,7 @@ router.post("/login", controller.login);                  // Necesitamos la ruta
 router.get("/logout", controller.logout);
 
 router.get("/register", controller.registerPage);         // Muestra la vista del formulario de register
-router.post("/register", controller.registerStore);
+router.post("/register", upload.single("profilePic"), controller.registerStore);
 
 router.get("/results", controller.showResults);
 

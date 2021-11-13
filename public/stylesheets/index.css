@@ -223,3 +223,7 @@ article.post div.post-comentarios a{
   :-ms-input-placeholder {
     color: #888;
   }
+
+  .likeHeart .uk-icon[uk-icon="icon:heart"] svg {
+    color: red;
+}

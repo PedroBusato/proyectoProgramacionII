@@ -12,4 +12,8 @@ router.post("/editProfile", upload.single("profilePic"), controller.editProfile)
 
 router.get("/userDetail/:user", controller.detailUser);
 
+router.get("/userDetail/followUser/:user", controller.followUser);
+router.get("/userDetail/unfollowUser/:user", controller.unfollowUser);
+
+
 module.exports = router;
