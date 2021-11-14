@@ -28,13 +28,12 @@ font-weight: 800;
 }
 
 article.post div.info-usuario img{
-    width: 100px;                         /*Agregamos estas lineas de codigo para poder modificar la estetica de las fotos de perfil*/
-    height: 100px;
+    width: 80px;                         /*Agregamos estas lineas de codigo para poder modificar la estetica de las fotos de perfil*/
+    height: 80px;
 }
 
 article.post div.post-body{
-    padding-bottom: 5px;
-    border-bottom: 1px solid goldenrod;
+    border-bottom: 2px solid goldenrod;
 }
 
 .post-body a{
@@ -44,8 +43,9 @@ article.post div.post-body{
 }
 
 .post-body img{
-    width: 500px;
+    width: 100%;
     height: 600px;
+    padding: 0px;
 }
 
 article.post div.post-reacciones ul.post-icons{
@@ -226,4 +226,8 @@ article.post div.post-comentarios a{
 
   .likeHeart .uk-icon[uk-icon="icon:heart"] svg {
     color: red;
+}
+
+.clasePrueba{
+  background-color: aqua;
 }

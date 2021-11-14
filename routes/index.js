@@ -20,5 +20,4 @@ router.post("/register", upload.single("profilePic"), controller.registerStore);
 
 router.get("/results", controller.showResults);
 
-
 module.exports = router;

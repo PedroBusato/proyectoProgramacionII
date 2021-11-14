@@ -1,12 +1,9 @@
 Cambios que tenemos que resolver
-1. Agregar las columnas createdAt y updatedAt en el modelo de User! 
-2. Ver de que el log in permita al usuario entrar tanto mediante su nombre de usuario (ya resuelto) como tambien mediante su correo electronico
 3. La vista error.ejs esta teniendo una incompatibilidad con el formulario de busqueda del header! Cada vez que hacemos una busqueda nos salta un error en la variable "ruta" de la vista "error.ejs"
 4. La imagen de id=3 de alejandro magno tiene nuevamente problemas con sos comentarios! --> Esta tomando los de la foto de gengis kan
-5. Necesitamos ordenar los posts del detalle de usuario pero estamos teniendo problemas ya que estan dentro de una asociacion
-6. Fijarse el tema de editProfile y la subida de imagenes con multer
-
-
+5. Estamos teniendo problemas con los resultados de busqueda
+6. Reviar el editProfile ya que esta redirigiendo mal y no se si funciona del todo bien!
+7. Debemos evitar que el usuario pueda seguirse a si mismo
 
 
 

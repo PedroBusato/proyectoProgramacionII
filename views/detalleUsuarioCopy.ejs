@@ -15,14 +15,16 @@
                     <div class="uk-width-2-3 uk-flex uk-flex-column uk-flex-around">
                         <div class="uk-flex uk-flex-middle"> 
                             <h3 class="uk-margin-remove"> <%= user.userName %></h3>
-                            <a href="/profile/editProfile" uk-icon="cog"></a>
-
-                            <% if (user.followers.find(follower => follower.idFollower == userLogedIn.idUser)) { %>
-                                <a href="/profile/userDetail/unfollowUser/<%=user.userName%>"> <button class="uk-button uk-button-small uk-button-primary uk-margin-left" style="background-color: red;">Dejar de Seguir</button> </a>
-                            <% } else { %>
-                                <a href="/profile/userDetail/followUser/<%=user.userName%>"> <button class="uk-button uk-button-small uk-button-primary uk-margin-left">Seguir</button> </a>
-                            <% } %>     
-
+                            
+                            <% if(userLogedIn.userName == user.userName){ %>                                                                    <% /*Solamente si el usuario en sesion es el mismo de la vista podemos editar su perfil*/ %>
+                                <a href="/profile/editProfile/<%= user.userName %>"> <span uk-icon="icon:cog; ratio: 1.1"></span> </a>
+                            <% } else{ %>                                                                                                       <% /*Si no son el mismo usuario, no podemos editar el perfil, pero si seguirlos o dejar de seguirlo*/ %>
+                                <% if (user.followers.find(follower => follower.idFollower == userLogedIn.idUser)) { %>
+                                    <a href="/profile/userDetail/unfollowUser/<%=user.userName%>"> <button class="uk-button uk-button-small uk-button-primary uk-margin-left" style="background-color: red;">Dejar de Seguir</button> </a>
+                                <% } else { %>
+                                    <a href="/profile/userDetail/followUser/<%=user.userName%>"> <button class="uk-button uk-button-small uk-button-primary uk-margin-left">Seguir</button> </a>
+                                <% } %>  
+                            <% } %>
                         </div>
                         <div>
                             <ul class="red-usuario uk-flex uk-flex-between uk-width-1-2">

@@ -1,9 +1,5 @@
-const moduloUsers = require("../data/users");
-const moduloPosts = require("../data/posts");
-const moduloComments = require("../data/comentarios");
 const db = require("../database/models");
 const op = db.Sequelize.Op;
-
 
 const controller = {
     addPost: function(req, res){
@@ -38,8 +34,8 @@ const controller = {
                         idPost: req.params.post
                     }
                 })
-            }
-            res.redirect("/profile/myProfile/" + req.session.user.userName)    
+                res.redirect("/profile/myProfile/" + req.session.user.userName)    
+           }
         }
     },
 

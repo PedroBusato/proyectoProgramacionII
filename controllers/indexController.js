@@ -1,5 +1,3 @@
-const moduloUsers = require("../data/users");                                         //Representan nuestros modelos dentros del patron MVC --> No estan en contacto directo con las vistas
-const moduloPosts = require("../data/posts");
 const db = require("../database/models");                                             //Requerimos todos nuestros modelos y los guardamos en la constante db
 const bcrypt = require('bcryptjs');
 const op = db.Sequelize.Op;
@@ -125,35 +123,46 @@ const controller = {
                 return res.render("error", {error, ruta: "/register"})
             })                                           
     },
-
-    // showResult: async function(req, res){
-    //     if (req.session.user) {
-    //         res.render("resultadoBusqueda")
-    //     } else{
-    //         res.redirect("/login")
-    //     }
-    // },
     
-    showResults: async function(req, res){
-        let userInput = req.query.search;                                                //El input lleva el nombre "search"
-        const posts = await db.Post.findAll({
-            where: [
-                {postDescription: { [op.like]: `%${userInput}%` }}
-            ],
-            order:[['postedDate','DESC']],
-            limit: 10,
-            include: [{ association: 'user' }]
-        })
-        const users = await db.User.findAll({
-            where: [
-                {userName: {[op.like]: `%${userInput}%`}}
-            ],
-            include: [{association: "posts"}]
-        })
+    // showResults: async function(req, res){
+    //     let posts;
+    //     let users;
+    //     let userInput = req.query.search;                                                //El input lleva el nombre "search"
         
-        if (posts.length >= 0 || users.length >= 0) {
-            res.render("resultadoBusqueda", {posts, users}) 
-        }
+    //     posts = await db.Post.findAll({
+    //         where: [
+    //             {postDescription: { [op.like]: `%${userInput}%` }}
+    //         ],
+    //         order:[['postedDate','DESC']],
+    //         limit: 10,
+    //         include: [{ association: 'user' }]
+    //     })
+
+    //     users = await db.User.findAll({
+    //         where: [
+    //             {userName: {[op.like]: `%${userInput}%`}}
+    //         ],
+    //         include: [{association: "posts"}],
+    //         limit: 10 - posts.length
+    //     })
+
+    //     res.render("resultadoBusqueda", {posts, users}) 
+    // }
+    showResults: function(req, res){                                            
+        db.Post.findAll({
+            where: {
+                postDescription: { [op.like]: `%${req.query.search}%` }     //El input lleva el nombre "search"
+            },                               
+            // order:[['postedDate','DESC']],
+            // limit: 10,
+            // include: [{ association: 'user' }]
+        })
+        .then(function(posts){
+            res.render("resultadoBusqueda", {posts}) 
+        })
+        .catch(function(error){
+            res.render("error", {error})
+        })
     }
 }
 
