@@ -72,14 +72,18 @@ const controller = {
         if (!req.session.user) {
             res.redirect("/login")
         } else{
-            db.User.findOne({where: {userName : req.params.user}})                                  
-            .then(function(userFollowing){
-                db.Follow.create({
-                    idFollower: req.session.user.idUser,
-                    idFollowing: userFollowing.idUser
-                })
-                res.redirect(`/profile/userDetail/${ req.params.user}`)
-            }) 
+            if (req.session.user.userName != req.params.user) {                                                           // No solo debemos verificar que el usuario este en sesion, sino tambien que este no intente seguirse a si mismo
+                db.User.findOne({where: {userName : req.params.user}})                                  
+                .then(function(userFollowing){
+                    db.Follow.create({
+                        idFollower: req.session.user.idUser,
+                        idFollowing: userFollowing.idUser
+                    })
+                    res.redirect(`/profile/userDetail/${ req.params.user}`)
+                })   
+            } else{
+                res.redirect("/profile/userDetail/" + req.params.user)
+            }
         }
     },
   
@@ -87,7 +91,8 @@ const controller = {
         if (!req.session.user) { 
             res.redirect("/login")
         } else{
-            db.User.findOne({where: {userName : req.params.user}})
+            if (req.session.user.userName != req.params.user) {
+                db.User.findOne({where: {userName : req.params.user}})
                 .then(function(userFollowing){
                     db.Follow.destroy({ 
                         where: {
@@ -96,6 +101,9 @@ const controller = {
                     })
                     res.redirect(`/profile/userDetail/${ req.params.user}`)
                 })
+            } else{
+                res.redirect("/profile/userDetail/" + req.params.user)
+            }
         }
     } 
 }
