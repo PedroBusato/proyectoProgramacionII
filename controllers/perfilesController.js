@@ -10,7 +10,8 @@ const controller = {
                     {association: "posts"},
                     {association: "followers"},
                     {association: "followings"}
-                ] 
+                ],
+                order:[["posts", "createdAt","DESC"]] 
             })                            
             res.render("miPerfil", {user})
         }else{
@@ -62,7 +63,7 @@ const controller = {
                 {association: "followers"},
                 {association: "followings"},
             ],
-            order:[["posts", "postedDate","DESC"]]                                                                        // Aclaramos que lo que ordenamos es la asociacion "posts"                     
+            order:[["posts", "createdAt","DESC"]]                                                                        // Aclaramos que lo que ordenamos es la asociacion "posts"                     
         });       
 
         res.render("detalleUsuarioCopy", {user});

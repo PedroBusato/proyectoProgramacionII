@@ -155,14 +155,15 @@ const controller = {
             },                               
             // order:[['postedDate','DESC']],
             // limit: 10,
-            // include: [{ association: 'user' }]
+            include: [{ association: 'user' }]
         })
         .then(function(posts){
             res.render("resultadoBusqueda", {posts}) 
         })
         .catch(function(error){
-            res.render("error", {error})
+            res.send(error)
         })
+        
     }
 }
 

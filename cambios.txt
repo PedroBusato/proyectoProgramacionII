@@ -2,8 +2,8 @@ Cambios que tenemos que resolver
 3. La vista error.ejs esta teniendo una incompatibilidad con el formulario de busqueda del header! Cada vez que hacemos una busqueda nos salta un error en la variable "ruta" de la vista "error.ejs"
 4. La imagen de id=3 de alejandro magno tiene nuevamente problemas con sos comentarios! --> Esta tomando los de la foto de gengis kan
 5. Estamos teniendo problemas con los resultados de busqueda
-6. Reviar el editProfile ya que esta redirigiendo mal y no se si funciona del todo bien!
-7. Debemos evitar que el usuario pueda seguirse a si mismo
+
+
 
 
 

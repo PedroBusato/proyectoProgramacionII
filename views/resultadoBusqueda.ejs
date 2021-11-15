@@ -7,19 +7,19 @@
     <%- include("./partials/header") %>
     <main>
         <div class="uk-section uk-section-small">
-            <!-- <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center"></div> -->
+            
             <% if(posts.length == 0){ %>
-                <div class="card" style="width: 18rem;">
-                    <h1>No se encontraron resultados para tu busqueda</h1>
+                <div id="contact">  
+                    <a href="/"> <h1>No se encontraron resultados para tu busqueda</h1> </a>
                 </div>
             <% } else{ %>
                 <div class="parent-container-users">
                     <% for( let i = 0; i < posts.length; i++ ) { %>
-                        <div class="results-searchUser">
+                        <div class="results-searchUser" id="contact">
                             <div class="column1-results">
                                 <a href="/profile/userDetail/<%= posts[i].userName %>"> <img src="<%= posts[i].user.profilePic %>" class="profilePic"> </a>
                                 <a href="/profile/userDetail/<%= posts[i].userName %>"> <h1> <%= posts[i].userName %> </h1> </a>
-                                <a href="/profile/userDetail/<%= users[i].userName %>" class="btn btn-primary">Ver Perfil</a>
+                                <a href="/profile/userDetail/<%= posts[i].userName %>" class="btn btn-primary">Ver Perfil</a>
                             </div>
         
                             <div class="column2-results">
@@ -30,13 +30,11 @@
                     <% } %>
                 </div>
             <% } %>
-            <!-- </div> -->
+            
         </div>
     </main>
 
-
     <%- include("./partials/footer") %>
-
 
 </body>
 
