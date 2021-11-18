@@ -66,7 +66,7 @@ const controller = {
             order:[["posts", "createdAt","DESC"]]                                                                        // Aclaramos que lo que ordenamos es la asociacion "posts"                     
         });       
 
-        res.render("detalleUsuarioCopy", {user});
+        res.render("detalleUsuario", {user});
     }, 
  
     followUser: function(req, res){

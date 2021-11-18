@@ -76,7 +76,7 @@ const controller = {
             ],
             order:[["comments", "createdAt","DESC"]]                                                                        // Aclaramos que lo que ordenamos es la asociacion "posts"                     
         });
-        res.render("detallePostCopy", {post})
+        res.render("detallePost", {post})
     },
 
     detailPostComment: function(req, res){                                            // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
