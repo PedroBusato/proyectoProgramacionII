@@ -7,7 +7,9 @@ const upload = multer({dest: "public/images/"});                                
 router.get("/addPost", controller.addPost);                                           //El parametro "image" que recibe la funcion representa el nombre del input del formulario!!!!
 router.post("/addPost",  upload.single("image"), controller.storePost);               //Desde el controlador podemos acceder a la informacion del archivo mediante req.file
 
-router.get("/deletePost/:post", controller.deletePost);
+// Deberia haber una ruta con get?
+
+router.post("/deletePost/:post", controller.deletePost);                              //Esta dando error el metodo "post"!
 
 router.get("/editPost/:post", controller.editPost);
 router.post("/editPost/:post", upload.single("image"), controller.updatePost);

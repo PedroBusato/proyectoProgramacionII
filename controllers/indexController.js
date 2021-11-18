@@ -25,7 +25,6 @@ const validateRegister = function(inputsUsuario, users){
     return errors;
 };
 
-
 const controller = {
     homePage: async function(req, res) {  
         let posts = await db.Post.findAll({ 
@@ -65,11 +64,11 @@ const controller = {
         if (!req.session.user){
             res.render("login")
         } else {
-            res.redirect("/")
+            res.redirect(`/profile/myProfile/${req.session.user.userName}`)
         }
     },  
 
-    login: async function(req, res){                                                                    //Intentamos que permita realizar el log in a traves del email del usuario tambien
+    login: async function(req, res){                                                                  
         let user;
         if (req.body.userLogIn.includes("@")) {                                        
             user = await db.User.findOne({where: {email: req.body.userLogIn}})           
@@ -92,8 +91,8 @@ const controller = {
     },
 
     logout: function(req, res){
-        res.clearCookie('userId');                                                                      //Eliminamos nuestra cookie "user"
-        req.session.user = null;                                                                        //Acabamos con nuestra sesion        
+        res.clearCookie('userId');                                                                                              //Eliminamos nuestra cookie "user"
+        req.session.user = null;                                                                                                //Acabamos con nuestra sesion        
         res.redirect('/');
     }, 
  
@@ -116,6 +115,7 @@ const controller = {
             req.body.profilePic = ("/images/"+ req.file.filename);
         }
         req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);                                 //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
+        
         db.User.create(req.body)                                                                            //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, detecta automaticamente a que columnas pertenecen cada uno de los datos
             .then(function(){
                 res.redirect("/login")                                                                      //Me redirecciona al index una vez que la promesa se cumplio
@@ -127,7 +127,7 @@ const controller = {
     showResults: async function(req, res){                                            
         let posts = await db.Post.findAll({
             where: {
-                postDescription: { [op.like]: `%${req.query.search}%` }     //El input lleva el nombre "search"
+                postDescription: { [op.like]: `%${req.query.search}%` }                                     //El input lleva el nombre "search"
             },
             include: [{ association: 'user' }]
         })
@@ -139,22 +139,6 @@ const controller = {
         })
         
         res.render("resultadoBusqueda", {posts, users})
-        
-        // db.Post.findAll({
-        //     where: {
-        //         postDescription: { [op.like]: `%${req.query.search}%` }     //El input lleva el nombre "search"
-        //     },                               
-        //     // order:[['postedDate','DESC']],
-        //     // limit: 10,
-        //     include: [{ association: 'user' }]
-        // })
-        // .then(function(posts){
-        //     res.render("resultadoBusqueda", {posts}) 
-        // })
-        // .catch(function(error){
-        //     res.send(error)
-        // })
-
     }
 }
 

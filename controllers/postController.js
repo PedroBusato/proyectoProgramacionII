@@ -26,16 +26,18 @@ const controller = {
     deletePost: async function(req, res){
         if (!req.session.user) {
             res.redirect("/login")
-        } else{
+        } else{ 
             const post = await db.Post.findByPk(req.params.post);
-            if (req.session.user.idUser == post.idUser) {
+            if (req.session.user.idUser == post.idUser) {                                        //No solo debemos validar que haya un usuario en sesion, sino que sea el mismo usuario que creo el post!
                 db.Post.destroy({
                     where: {
                         idPost: req.params.post
                     }
                 })
                 res.redirect("/profile/myProfile/" + req.session.user.userName)    
-           }
+            } else{
+                res.redirect("/post/detailPost/" + req.params.post)
+            }
         }
     },
 
@@ -64,23 +66,23 @@ const controller = {
             })
             res.redirect("/profile/myProfile/" + req.session.user.userName)
         } else{
-            res.redirect("/post/detailPost/" + req.params.post)
+            res.render("error", {error: "El post que intentas editar no es tuyo", ruta: "/post/detailPost/" + req.params.post})
         }
     },
 
-    detailPost: async function(req, res){                                             // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios        
+    detailPost: async function(req, res){                                                        //Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios        
         let post = await db.Post.findByPk(req.params.post, {
             include: [
                 { association: "user" },
                 { association: "comments", include:[{association: "user"}] }
             ],
-            order:[["comments", "createdAt","DESC"]]                                                                        // Aclaramos que lo que ordenamos es la asociacion "posts"                     
+            order:[["comments", "createdAt","DESC"]]                                             //Aclaramos que lo que ordenamos es la asociacion "posts"                     
         });
         res.render("detallePost", {post})
     },
 
-    detailPostComment: function(req, res){                                            // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
-        if (req.session.user){                                                       // Autenticacion --> Verifico que hay un usuario en session
+    detailPostComment: function(req, res){                                                       // Lo unico que nos queda por encontrar son las fotos de perfil de los usuarios que realizan los comentarios
+        if (req.session.user){                                                                   // Autenticacion --> Verifico que hay un usuario en session
             db.Comment.create({
                 idPost: req.params.post,
                 userName: req.session.user.userName,

@@ -1,7 +1,7 @@
 Cambios que tenemos que resolver
 3. La vista error.ejs esta teniendo una incompatibilidad con el formulario de busqueda del header! Cada vez que hacemos una busqueda nos salta un error en la variable "ruta" de la vista "error.ejs"
 4. La imagen de id=3 de alejandro magno tiene nuevamente problemas con sos comentarios! --> Esta tomando los de la foto de gengis kan
-5. Estamos teniendo problemas con los resultados de busqueda
+5. Cambiar el diseño de la vista de errores
 
 
 

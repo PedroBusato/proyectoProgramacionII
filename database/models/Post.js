@@ -15,10 +15,6 @@ module.exports = (sequelize, dataTypes) => {
             allowNule: true,
             type: dataTypes.STRING(500)
         },
-        postedDate: {
-            allowNull: true,
-            type: dataTypes.DATE                  //Podriamos eliminar esta columna del modelo y de la tabla ya que tenemos la columna de created at
-        },
         idUser: {
             allowNull: false,
             type: dataTypes.INTEGER

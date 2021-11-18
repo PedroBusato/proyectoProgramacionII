@@ -10,7 +10,11 @@ article.detalle-post .imagen-post{
 
 .comentarios-detalle{
     border-left: 1px solid goldenrod;
-   
+}
+
+.comentarios-detalle form .icono-eliminarPost{
+    background-color: white;
+    border: 0px 
 }
 
 .comentarios-detalle .info-post{

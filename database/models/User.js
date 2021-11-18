@@ -1,12 +1,12 @@
 module.exports = (sequelize, dataTypes) => {
     
-    const alias = "User";       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
+    const alias = "User";                       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
 
     const columns = {
         idUser: {
             autoincrement: true,
             primaryKey: true,
-            type: dataTypes.INTEGER //Especificamos el tipo de dato de la columna
+            type: dataTypes.INTEGER             //Especificamos el tipo de dato de la columna
         },
         userName: {
             allowNull: false,
@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
         email: {
             allowNull: false,
             type: dataTypes.STRING(200),
-            unique: true            // No confundir con la primary key! --> permite aclarar que se trata de un campo unico e irrepetible
+            unique: true                        // No confundir con la primary key! --> permite aclarar que se trata de un campo unico e irrepetible
         },
         userPassword: {
             allowNull: false,
@@ -47,10 +47,10 @@ module.exports = (sequelize, dataTypes) => {
     }
     
     const config = {
-        tableName: "users",          //En caso de querer, podemos especificar el nombre de la tabla a la cual se relaciona nuestro modelo
+        tableName: "users",                     //En caso de querer, podemos especificar el nombre de la tabla a la cual se relaciona nuestro modelo
         timestamps: true,           
         underscored:false
-    }                                //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
+    }                                           //Recordemos que el nombre de la base de datos la habiamos aclarado en el archivo config.js
 
     const User = sequelize.define(alias, columns, config);
 
@@ -61,11 +61,11 @@ module.exports = (sequelize, dataTypes) => {
         }),
         User.hasMany(models.Follow, {
             as: "followers",                     
-            foreignKey: "idFollowing"           //no seria idUser?
+            foreignKey: "idFollowing"           
         }),
         User.hasMany(models.Follow, {
             as: "followings",                       
-            foreignKey: "idFollower"           //no seria idUser?
+            foreignKey: "idFollower"          
         })
 
     }

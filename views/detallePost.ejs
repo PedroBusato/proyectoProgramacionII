@@ -18,8 +18,10 @@
                             <h3><a href="/profile/userDetail/<%= post.user.userName %>"><%= post.user.userName %></a></h3>
                             
                             <% if(userLogedIn.idUser == post.user.idUser){ %>
-                                <a href="/post/deletePost/<%=post.idPost%>"> <span uk-icon="trash" style="color: red;"></span> </a>
-                                <a href="/post/editPost/<%=post.idPost%>"> <span uk-icon="cog"></span> </a>
+                                <form action="/post/deletePost/<%=post.idPost%>" method="POST">
+                                    <button class="icono-eliminarPost"> <span uk-icon="trash" style="color: red;"></span> </button>
+                                </form>
+                                    <a href="/post/editPost/<%=post.idPost%>"> <span uk-icon="cog"></span> </a>
                             <% } %>
                             
                         </div>

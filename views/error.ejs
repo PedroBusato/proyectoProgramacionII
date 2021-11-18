@@ -8,19 +8,19 @@
 
         <% if (typeof error == "string") { %>
             <div class="mainDiv">
-                <div class="alert alert-warning" role="alert">
+                <div id="contact"> 
                     <h1><%=error%></h1>
-                    <a href="#"> <h2>Intente Nuevamente</h2> </a>
+                    <a href="<%=ruta%>"> <h2>Intente Nuevamente</h2> </a>
                 </div> 
             </div>
         <% }else { %>
             <div class="mainDiv">
-                <div class="alert alert-warning" role="alert">
+                <div id="contact"> 
                     <% for (let i = 0; i < error.length; i++) { %>
                             <h1><%= error[i] %></h1>
                             <br>
                     <% } %>
-                    <a href="#"> <h2>Intente Nuevamente</h2> </a>
+                    <a href="<%=ruta%>"> <h2>Intente Nuevamente</h2> </a>
                 </div>
             </div>
         <% } %>

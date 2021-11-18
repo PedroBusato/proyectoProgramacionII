@@ -11,7 +11,6 @@ var postRouter = require("./routes/post");
 var perfilRouter = require("./routes/perfiles");
 
 var app = express();
-// db.sequelize.sync({alter:true})                                                       //Esta linea sincroniza los modelos con la base de datos
 
 // Configuramos el session -> queremos que la informacion de session este disponible en todas las paginas. En los controladores podriamos poner req.session.nombrePropiedad y guardar informacion en session
 app.use(session( 
@@ -70,7 +69,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {ruta: "/"});
 });
 
 module.exports = app;
