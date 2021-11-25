@@ -12,7 +12,7 @@ var perfilRouter = require("./routes/perfiles");
 
 var app = express();
 
-// Configuramos el session -> queremos que la informacion de session este disponible en todas las paginas. En los controladores podriamos poner req.session.nombrePropiedad y guardar informacion en session
+// Configuramos el session -> Queremos que la informacion de session este disponible en todas las paginas. En los controladores podriamos poner req.session.nombrePropiedad y guardar informacion en session
 app.use(session( 
   { secret: "secret",
     resave: false,

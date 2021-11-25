@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
     
-    const alias = "User";                       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL (en plural) 
+    const alias = "User";                       //Especificamos el nombre del modelo. En nuestro caso le colocamos el mismo nombre que a la tabla de mySQL pero en singular  
 
-    const columns = {
+    const columns = {                           //No hay que especificar el nombre de la tabla? No, ya que sequelize se maneja por estandares --> Detecta que el nombre de la tabla sera el del modelo en plural
         idUser: {
             autoincrement: true,
             primaryKey: true,

@@ -96,32 +96,34 @@ const controller = {
         res.redirect('/');
     }, 
  
-    registerPage: function(req, res){
+    registerPage: function(req, res){                                                                           //Se encarga de mostrar la vista con el formulario de registracion                                                       
         if (!req.session.user){
-        res.render("registracion")
+            res.render("registracion")
         } else{
             res.redirect(`/profile/myProfile/${req.session.user.userName}`)
         } 
     }, 
 
-    registerStore: async function(req, res){                                                
+    registerStore: async function(req, res){                                                                    //Procesa la información del formulario de registracion                                             
         let users = await db.User.findAll();
         let errors = validateRegister(req.body, users);
+        
         if (errors.length > 0) {
             res.render("error", { error: errors, ruta: "/register"})
-        }
-
-        if (req.file) {
-            req.body.profilePic = ("/images/"+ req.file.filename);
-        }
-        req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);                                 //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
-        
-        db.User.create(req.body)                                                                            //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, detecta automaticamente a que columnas pertenecen cada uno de los datos
-            .then(function(){
-                res.redirect("/login")                                                                      //Me redirecciona al index una vez que la promesa se cumplio
-            }).catch(function(error){
-                return res.render("error", {error, ruta: "/register"})
-            })                                           
+        } else {
+            if (req.file) {
+                req.body.profilePic = ("/images/"+ req.file.filename);
+            }
+            req.body.userPassword = bcrypt.hashSync(req.body.userPassword, 10);                                 //Sobreescribimos lo que ingresa el usuario en el formulario por su contraseña hasheada
+            
+            db.User.create(req.body)                                                                            //Al agregar la propiedad "name" con el atributo identico a las columnas de la base de datos, detecta automaticamente a que columnas pertenecen cada uno de los datos
+                .then(function(){     
+                    res.redirect("/login")                                                                      //Me redirecciona al index una vez que la promesa se cumplio
+                })
+                .catch(function(error){
+                    return res.render("error", {error, ruta: "/register"})
+                })  
+        }                                  
     },
     
     showResults: async function(req, res){                                            
